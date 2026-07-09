@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Repositorio &middot; Divulgaci&oacute;n USerena</title>
+<meta name="description" content="Busca y explora entradas divulgativas de la Universidad de La Serena por &aacute;rea, tipo y palabra clave.">
+<meta property="og:title" content="Repositorio &middot; Divulgaci&oacute;n USerena">
+<meta property="og:description" content="Busca y explora entradas divulgativas de la Universidad de La Serena por &aacute;rea, tipo y palabra clave.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
+</head>
+<body class="page-repo">
+<nav class="nav solid" id="nav">
+  <div class="nav-in">
+    <a class="brand" href="index.html" aria-label="Divulgaci&oacute;n USerena"><img src="assets/svg/logo-divulgacion.svg" alt="Divulgaci&oacute;n USerena"></a>
+    <ul id="navmenu">
+      <li><a class="item" href="index.html">Inicio</a></li>
+      <li><a class="item active" href="repositorio.html">Repositorio <span class="caret">&#9662;</span></a></li>
+      <li><a class="item" href="equipo.html">Equipo <span class="caret">&#9662;</span></a></li>
+      <li><a class="item" href="contacto.html">Contacto</a></li>
+    </ul>
+    <button class="navtoggle" id="navtoggle" aria-label="Men&uacute;" aria-expanded="false">&#9776;</button>
+  </div>
+</nav>
+
+<!-- MINI-HERO + FILTROS -->
+<header class="mhero">
+  <div class="bg"><img src="assets/img/hero-repositorio.webp" alt=""></div>
+  <div class="inner">
+    <nav class="crumb" aria-label="Ruta"><a href="index.html">Inicio</a><span class="sep">&raquo;</span><b>Repositorio</b></nav>
+    <h1><b>Busca</b> el tema que te interese</h1>
+    <p class="lead">Explora entradas divulgativas producidas y publicadas por la Oficina de Divulgaci&oacute;n de la Universidad de La Serena.</p>
+    <div class="fbar">
+      <div class="fsearch">
+        <svg class="mag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input id="q" type="text" placeholder="Buscar entrada por&hellip;" aria-label="Buscar entrada">
+      </div>
+      <div class="fselect">
+        <select id="orden" aria-label="Ordenar">
+          <option value="reciente">M&aacute;s reciente</option>
+          <option value="antiguo">M&aacute;s antiguo</option>
+          <option value="az">A &ndash; Z</option>
+        </select>
+      </div>
+      <div class="fselect">
+        <select id="tipo" aria-label="Tipo de material">
+          <option value="">Todo el material</option>
+          <option value="grafico">Gr&aacute;fico</option>
+          <option value="audiovisual">Audiovisual</option>
+          <option value="podcast">Podcast</option>
+        </select>
+      </div>
+      <button class="fclear" id="clear">Limpiar filtros</button>
+    </div>
+    <div class="fchips" id="chips">
+      <span class="lbl">&Aacute;reas:</span>
+      <button class="chip-f" data-area="humanidades" style="--chip-c:var(--yellow);--chip-text:#16181D" aria-pressed="false">Humanidades</button>
+      <button class="chip-f" data-area="ciencias" style="--chip-c:var(--green);--chip-text:#16181D" aria-pressed="false">Ciencias</button>
+      <button class="chip-f" data-area="facsej" style="--chip-c:var(--purple);--chip-text:#fff" aria-pressed="false">Cs. Sociales, Empresariales y Jur&iacute;dicas</button>
+      <button class="chip-f" data-area="ingenieria" style="--chip-c:var(--blue);--chip-text:#16181D" aria-pressed="false">Ingenier&iacute;a</button>
+    </div>
+    <div class="rcount" id="rcount" aria-live="polite"></div>
+  </div>
+</header>
+
+<section class="results" id="results">
+  <div class="wrap">
+    <div class="rgrid" id="grid"></div>
+    <div class="empty" id="empty" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <h3>Sin resultados</h3>
+      <p id="emptymsg"></p>
+      <button class="reset" id="emptyreset">Limpiar filtros</button>
+    </div>
+    <nav class="pager" id="pager" aria-label="Paginaci&oacute;n"></nav>
+  </div>
+</section>
+
+<section class="sitios">
+  <div class="in wrap">
+    <b>Sitios de inter&eacute;s</b><span class="sep">|</span><a href="#">CRUCH</a><span class="sep">|</span><a href="#">CUECH</a><span class="sep">|</span><a href="#">AUR</a><span class="sep">|</span><a href="#">REUNA</a><span class="sep">|</span><a href="#">UNIVERSIA</a><span class="sep">|</span><a href="#">UESTV</a><span class="sep">|</span><a href="#">Portal de Revistas</a>
+  </div>
+</section>
+<footer class="footer">
+  <div class="fin">
+    <div class="foot-main">
+      <a class="flogo us" href="https://userena.cl/" target="_blank" rel="noopener" aria-label="Universidad de La Serena"><img src="assets/svg/logo-userena.svg" alt="Universidad de La Serena"></a>
+      <span class="fdiv"></span>
+      <a class="flogo cna" href="#" aria-label="Acreditaci&oacute;n CNA"><img src="assets/svg/logo-cna.svg" alt="Universidad acreditada &mdash; CNA Chile"></a>
+      <span class="fdiv"></span>
+      <div class="foot-social">
+        <a href="https://userena.cl/" target="_blank" rel="noopener" aria-label="Universidad de La Serena"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 130 130"> <defs> <style> .iust0 { fill: currentColor; fill-rule: evenodd; } </style> </defs> <path class="iust0" d="M46.4,15.1l-18.9.3v13.9h20.5c0-.1,15.1-9.1,15.1-9.1V5l-16.7,10.1ZM60.3,18.6l-13.1,7.8h-16.9c0,0,0-8.1,0-8.1l16.9-.3,13.1-7.9v8.5Z"/> <polygon class="iust0" points="27.5 35.5 47.2 35.4 63.2 26.4 63.2 23.5 47.2 32.6 27.5 32.7 27.5 35.5"/> <polygon class="iust0" points="27.5 41.7 47.2 41.6 63.2 32.6 63.2 29.7 47.2 38.8 27.5 38.9 27.5 41.7"/> <path class="iust0" d="M47.4,65.8v-20.9h-22.8v19.6h3.3s0,40.7,0,40.7l35.7,19.9v-20.3s-16.2-9-16.2-9v-20.6l12.9,7.2v8.1l4.3,2.2,4.3-2.3v-12.7l-21.4-12ZM66,88.7l-1.4.8-1.4-.7v-8.1l-18.6-10.4v27.1l16.2,9v13.7s-30-16.7-30-16.7v-41.9h-3.3s0-13.7,0-13.7h3.3s13.8,0,13.8,0v19.7l21.4,12v9.3Z"/> <path class="iust0" d="M82.6,44.7v18.9l-13.8-7.7v-8.1l-4.3-2.2-4.3,2.3v12.7l22.3,12.4v22.6l-16.2,9.1v20.3s35.7-20.3,35.7-20.3v-40.7h3.3v-19.5h-22.8ZM102.5,61.1h-3.3v41.9l-30,17.1v-13.7s16.2-9.1,16.2-9.1v-25.6l-.5-.6-21.8-12.2v-9.3l1.4-.8,1.4.7v8.1l19.5,10.8v-20.9h13.8c0,0,3.3,0,3.3,0v13.7Z"/> <path class="iust0" d="M82.7,14.9l-16.7-9.9v15.2l15.1,8.8h21.4v-14h-19.8ZM99.6,20.3v5.8h-17.8c0,0-13.1-7.5-13.1-7.5v-8.5l13.1,7.8h17.8v2.5Z"/> <polygon class="iust0" points="102.5 35.1 81.9 35.2 66 26.4 66 23.5 81.9 32.4 102.5 32.3 102.5 35.1"/> <polygon class="iust0" points="102.5 41.3 81.9 41.4 66 32.5 66 29.7 81.9 38.6 102.5 38.4 102.5 41.3"/> </svg></a>
+        <a href="https://www.instagram.com/divulgacionuserena/" target="_blank" rel="noopener" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 130 130"> <defs> <style> .igst0 { fill: currentColor; } </style> </defs> <path class="igst0" d="M95.8,5.5h-61.6c-15.9,0-28.7,12.9-28.7,28.7v61.6c0,15.9,12.9,28.7,28.7,28.7h61.6c15.9,0,28.7-12.9,28.7-28.7v-61.6c0-15.9-12.9-28.7-28.7-28.7ZM114.2,93.7c0,11.3-9.2,20.5-20.5,20.5h-57.4c-11.3,0-20.5-9.2-20.5-20.5v-57.4c0-11.3,9.2-20.5,20.5-20.5h57.4c11.3,0,20.5,9.2,20.5,20.5v57.4Z"/> <path class="igst0" d="M65,34.2c-17,0-30.8,13.8-30.8,30.8s13.8,30.8,30.8,30.8,30.8-13.8,30.8-30.8-13.8-30.8-30.8-30.8ZM65,85.5c-11.3,0-20.5-9.2-20.5-20.5s9.2-20.5,20.5-20.5,20.5,9.2,20.5,20.5-9.2,20.5-20.5,20.5Z"/> <circle class="igst0" cx="97.8" cy="32.2" r="6.2"/> </svg></a>
+        <a href="https://www.youtube.com/@divulgacionuserena" target="_blank" rel="noopener" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 130 130"> <defs> <style> .ytst0 { fill: currentColor; } </style> </defs> <path class="ytst0" d="M108.4,22.3H21.6c-8.6,0-15.5,7-15.5,15.5v54.3c0,8.6,7,15.5,15.5,15.5h86.8c8.6,0,15.5-6.9,15.5-15.5v-54.3c0-8.6-7-15.5-15.5-15.5ZM78.9,68.7l-24.1,12.1c-2.8,1.4-6.1-.6-6.1-3.7v-24.1c0-3.1,3.3-5.1,6.1-3.7l24.1,12.1c3.1,1.5,3.1,5.9,0,7.5Z"/> </svg></a>
+        <a href="https://x.com/vripuserena" target="_blank" rel="noopener" aria-label="X"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 130 130"> <defs> <style> .xtst0 { fill: currentColor; } </style> </defs> <path class="xtst0" d="M78.5,56.4L116.5,15.8h-14.4l-29.8,31.9-22.8-31.9H10l39.9,55.8L10,114.2h14.4l31.8-34,24.3,34h39.4l-41.4-57.9ZM30.4,26.2h13.7l55.5,77.6h-13.7L30.4,26.2Z"/> </svg></a>
+        <a href="https://www.linkedin.com/company/vripuserena/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 130 130"> <defs> <style> .list0 { fill: currentColor; } </style> </defs> <circle class="list0" cx="25.7" cy="24.5" r="14.3"/> <rect class="list0" x="13.7" y="48.3" width="23.8" height="71.5" rx="1" ry="1"/> <path class="list0" d="M118.6,74.5v40.4c0,2.7-2.2,4.9-4.9,4.9h-14.1c-2.7,0-4.9-2.2-4.9-4.9v-32.6c0-6.2-4.5-11.9-10.7-12.5-7.1-.7-13.2,4.9-13.2,11.9v33.3c0,2.7-2.2,4.9-4.9,4.9h-14.1c-2.7,0-4.9-2.2-4.9-4.9v-61.8c0-2.7,2.2-4.9,4.9-4.9h14.1c2.7,0,4.9,2.2,4.9,4.9v3c4.8-6.2,12.7-10.2,21.5-10.2,13.2,0,26.2,9.5,26.2,28.6Z"/> </svg></a>
+      </div>
+    </div>
+    <hr class="foot-rule">
+    <div class="foot-bottom">
+      <span><a href="#">Pol&iacute;tica de privacidad</a><span class="b">|</span><a href="#">T&eacute;rminos y condiciones</a></span>
+      <span>Todos los derechos reservados &copy; 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/repo.js"></script>
+</body>
+</html>

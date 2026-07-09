@@ -1,0 +1,301 @@
+[
+  {
+    "id": 1,
+    "slug": "analisis-discurso-tesis",
+    "titulo": "Estudios y análisis del discurso en tesis doctorales",
+    "resumen": "Cómo se construye el discurso académico en investigaciones doctorales.",
+    "area": "humanidades",
+    "disciplina": "Ped. en Castellano y Filosofía",
+    "tipo": "grafico",
+    "fecha": "2026-06-30",
+    "img": "assets/img/entradas/analisis-discurso-tesis.webp",
+    "alt": "Personas conversando frente a un notebook en una reunión de trabajo.",
+    "url": "entrada.html?slug=analisis-discurso-tesis",
+    "destacado": false
+  },
+  {
+    "id": 2,
+    "slug": "aceite-papaya",
+    "titulo": "Encapsulación de aceite de semillas de papaya",
+    "resumen": "Macrocápsulas estables que mejoran la bioaccesibilidad del aceite de papaya.",
+    "area": "ingenieria",
+    "disciplina": "Ing. en Alimentos",
+    "tipo": "grafico",
+    "fecha": "2026-06-28",
+    "img": "assets/img/entradas/aceite-papaya.webp",
+    "alt": "Papaya cortada por la mitad mostrando sus semillas, sobre fondo claro.",
+    "url": "entrada.html?slug=aceite-papaya",
+    "destacado": false,
+    "creditos": "Investigación de la Universidad de La Serena, difundida por la Oficina de Divulgación y Difusión de la Ciencia y la Tecnología.",
+    "bloques": [
+      {
+        "tipo": "parrafo",
+        "texto": "El aceite de las semillas de papaya concentra <b>compuestos bioactivos</b> de alto valor, pero es muy sensible a la oxidación. Encapsularlo permite protegerlo y mejorar su aprovechamiento en el organismo."
+      },
+      {
+        "tipo": "subtitulo",
+        "texto": "El desafío de estabilizar el aceite"
+      },
+      {
+        "tipo": "parrafo",
+        "texto": "El equipo desarrolló macrocápsulas capaces de mantener el aceite estable y liberarlo de forma controlada en el tracto intestinal, usando metodología de superficie de respuesta (RSM)."
+      },
+      {
+        "tipo": "imagen",
+        "src": "assets/img/entradas/aceite-papaya.webp",
+        "alt": "Papaya cortada mostrando sus semillas.",
+        "pie": "Las semillas de papaya, habitualmente descartadas, son la materia prima del estudio."
+      },
+      {
+        "tipo": "cita",
+        "texto": "La encapsulación no solo protege el aceite: nos permite decidir dónde y cuándo se libera en el organismo.",
+        "autor": "Dra. Vilbett Briones"
+      },
+      {
+        "tipo": "parrafo",
+        "texto": "Los resultados muestran una <b>bioaccesibilidad del 75,36%</b> y una liberación intestinal del 52,23%, cifras que abren la puerta a aplicaciones en alimentos funcionales."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "slug": "pluralismo-ecosistemas-digitales",
+    "titulo": "Pluralismo en ecosistemas digitales",
+    "resumen": "Diversidad de voces y actores en los entornos informativos digitales.",
+    "area": "facsej",
+    "disciplina": "Periodismo",
+    "tipo": "audiovisual",
+    "fecha": "2026-06-26",
+    "img": "assets/img/entradas/pluralismo-ecosistemas-digitales.webp",
+    "alt": "Ilustración 3D de cubos violetas interconectados representando redes digitales.",
+    "url": "entrada.html?slug=pluralismo-ecosistemas-digitales",
+    "youtubeId": "YT_ID_AQUI",
+    "destacado": false
+  },
+  {
+    "id": 4,
+    "slug": "buenas-practicas-forestales",
+    "titulo": "Buenas prácticas en los ambientes forestales",
+    "resumen": "Manejo sostenible del bosque para conservar suelo, agua y biodiversidad.",
+    "area": "ciencias",
+    "disciplina": "Agronomía",
+    "tipo": "grafico",
+    "fecha": "2026-06-24",
+    "img": "assets/img/entradas/buenas-practicas-forestales.webp",
+    "alt": "Bosque de coníferas con luz filtrándose entre los árboles.",
+    "url": "entrada.html?slug=buenas-practicas-forestales",
+    "destacado": false
+  },
+  {
+    "id": 5,
+    "slug": "galaxias-anilladas",
+    "titulo": "Galaxias anilladas colisionales: ¿cómo detectarlas?",
+    "resumen": "Métodos para identificar galaxias con anillos formados por colisiones.",
+    "area": "ciencias",
+    "disciplina": "Astronomía",
+    "tipo": "audiovisual",
+    "fecha": "2026-06-22",
+    "img": "assets/img/entradas/galaxias-anilladas.webp",
+    "alt": "Representación de una galaxia espiral vista de frente.",
+    "url": "entrada.html?slug=galaxias-anilladas",
+    "youtubeId": "YT_ID_AQUI",
+    "destacado": false,
+    "creditos": "Investigación de la Universidad de La Serena, difundida por la Oficina de Divulgación y Difusión de la Ciencia y la Tecnología.",
+    "bloques": [
+      {
+        "tipo": "video",
+        "youtubeId": "YT_ID_AQUI",
+        "poster": "assets/img/entradas/galaxias-anilladas.webp"
+      },
+      {
+        "tipo": "parrafo",
+        "texto": "En esta cápsula audiovisual exploramos cómo se forman las <b>galaxias anilladas colisionales</b> y qué técnicas usan los astrónomos para detectarlas desde los cielos del norte de Chile."
+      },
+      {
+        "tipo": "subtitulo",
+        "texto": "¿Qué es una galaxia anillada?"
+      },
+      {
+        "tipo": "parrafo",
+        "texto": "Son galaxias cuyo anillo se forma tras la colisión con otra galaxia, un fenómeno que deja huellas observables a gran distancia."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "slug": "prototipado-impacto-social",
+    "titulo": "Prototipado con impacto social y pertinencia",
+    "resumen": "Del boceto al usuario: diseño de mobiliario con foco en las personas.",
+    "area": "humanidades",
+    "disciplina": "Diseño",
+    "tipo": "grafico",
+    "fecha": "2026-06-19",
+    "img": "assets/img/entradas/prototipado-impacto-social.webp",
+    "alt": "Manos bocetando sillas sobre planos de diseño de mobiliario.",
+    "url": "entrada.html?slug=prototipado-impacto-social",
+    "destacado": false
+  },
+  {
+    "id": 7,
+    "slug": "aves-cantoras-cambio-climatico",
+    "titulo": "Aves cantoras: ¿qué tan vulnerables son al cambio climático?",
+    "resumen": "Rasgos que determinan el riesgo de extinción en paseriformes.",
+    "area": "ciencias",
+    "disciplina": "Biología",
+    "tipo": "podcast",
+    "fecha": "2026-06-16",
+    "img": "assets/img/entradas/aves-cantoras-cambio-climatico.webp",
+    "alt": "Ave paseriforme de pecho amarillo y cabeza azul posada sobre una hoja. [Revisar especie]",
+    "url": "entrada.html?slug=aves-cantoras-cambio-climatico",
+    "destacado": true,
+    "creditos": "Investigación de la Universidad de La Serena, difundida por la Oficina de Divulgación y Difusión de la Ciencia y la Tecnología.",
+    "bloques": [
+      {
+        "tipo": "parrafo",
+        "texto": "Las aves cantoras —o paseriformes— son el grupo más diverso de aves del planeta. Entender qué las hace vulnerables al cambio climático es clave para su conservación."
+      },
+      {
+        "tipo": "subtitulo",
+        "texto": "Un grupo diverso y frágil"
+      },
+      {
+        "tipo": "carrusel",
+        "pie": "Registro fotográfico del equipo. [Revisar especies]",
+        "imagenes": [
+          {
+            "src": "assets/img/entradas/aves-cantoras-cambio-climatico.webp",
+            "alt": "Ave paseriforme de pecho amarillo. [Revisar especie]"
+          },
+          {
+            "src": "assets/img/entradas/monitoreo-acustico-paseriformes.webp",
+            "alt": "Ave posada sobre una hoja. [Revisar especie]"
+          }
+        ]
+      },
+      {
+        "tipo": "cita",
+        "texto": "No todas las especies responden igual: algunas tienen rasgos que las hacen mucho más sensibles.",
+        "autor": "Equipo de investigación"
+      },
+      {
+        "tipo": "parrafo",
+        "texto": "El estudio identifica rasgos ecológicos que predicen el riesgo de extinción, información esencial para priorizar los esfuerzos de conservación."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "slug": "regulacion-plataformas-digitales",
+    "titulo": "Regulación de plataformas digitales en Chile",
+    "resumen": "Marcos normativos emergentes para las grandes plataformas.",
+    "area": "facsej",
+    "disciplina": "Derecho",
+    "tipo": "podcast",
+    "fecha": "2026-06-13",
+    "img": "assets/img/entradas/regulacion-plataformas-digitales.webp",
+    "alt": "Ilustración 3D de cubos violetas interconectados.",
+    "url": "entrada.html?slug=regulacion-plataformas-digitales",
+    "destacado": false
+  },
+  {
+    "id": 9,
+    "slug": "bosque-nativo-carbono",
+    "titulo": "El bosque nativo como sumidero de carbono",
+    "resumen": "Rol de los bosques del centro-sur en la captura de CO₂.",
+    "area": "ciencias",
+    "disciplina": "Agronomía",
+    "tipo": "audiovisual",
+    "fecha": "2026-06-10",
+    "img": "assets/img/entradas/bosque-nativo-carbono.webp",
+    "alt": "Bosque nativo verde con vegetación baja.",
+    "url": "entrada.html?slug=bosque-nativo-carbono",
+    "youtubeId": "YT_ID_AQUI",
+    "destacado": false
+  },
+  {
+    "id": 10,
+    "slug": "retorica-discurso-publico",
+    "titulo": "Retórica y argumentación en el discurso público",
+    "resumen": "Herramientas para analizar la persuasión en la esfera pública.",
+    "area": "humanidades",
+    "disciplina": "Filosofía",
+    "tipo": "podcast",
+    "fecha": "2026-06-06",
+    "img": "assets/img/entradas/retorica-discurso-publico.webp",
+    "alt": "Reunión de trabajo con notebook sobre la mesa.",
+    "url": "entrada.html?slug=retorica-discurso-publico",
+    "destacado": false
+  },
+  {
+    "id": 11,
+    "slug": "compuestos-bioactivos-frutos",
+    "titulo": "Compuestos bioactivos en frutos del norte chico",
+    "resumen": "Potencial nutracéutico de frutos cultivados en la región.",
+    "area": "ingenieria",
+    "disciplina": "Ing. en Alimentos",
+    "tipo": "audiovisual",
+    "fecha": "2026-06-03",
+    "img": "assets/img/entradas/compuestos-bioactivos-frutos.webp",
+    "alt": "Papaya partida sobre fondo claro.",
+    "url": "entrada.html?slug=compuestos-bioactivos-frutos",
+    "youtubeId": "YT_ID_AQUI",
+    "destacado": false
+  },
+  {
+    "id": 12,
+    "slug": "cartografia-via-lactea",
+    "titulo": "Cartografía de la Vía Láctea desde el norte de Chile",
+    "resumen": "Mapear nuestra galaxia aprovechando los cielos del norte.",
+    "area": "ciencias",
+    "disciplina": "Astronomía",
+    "tipo": "grafico",
+    "fecha": "2026-05-29",
+    "img": "assets/img/entradas/cartografia-via-lactea.webp",
+    "alt": "Galaxia espiral sobre fondo oscuro.",
+    "url": "entrada.html?slug=cartografia-via-lactea",
+    "destacado": false
+  },
+  {
+    "id": 13,
+    "slug": "mobiliario-sostenible",
+    "titulo": "Mobiliario sostenible: del boceto al usuario",
+    "resumen": "Procesos de diseño que integran materiales y necesidades reales.",
+    "area": "humanidades",
+    "disciplina": "Diseño",
+    "tipo": "audiovisual",
+    "fecha": "2026-05-24",
+    "img": "assets/img/entradas/mobiliario-sostenible.webp",
+    "alt": "Bocetos de sillas y planos de diseño de mobiliario.",
+    "url": "entrada.html?slug=mobiliario-sostenible",
+    "youtubeId": "YT_ID_AQUI",
+    "destacado": false
+  },
+  {
+    "id": 14,
+    "slug": "monitoreo-acustico-paseriformes",
+    "titulo": "Cantos de alerta: monitoreo acústico de paseriformes",
+    "resumen": "Escuchar el bosque para estimar la salud de las poblaciones de aves.",
+    "area": "ciencias",
+    "disciplina": "Biología",
+    "tipo": "grafico",
+    "fecha": "2026-05-20",
+    "img": "assets/img/entradas/monitoreo-acustico-paseriformes.webp",
+    "alt": "Ave paseriforme amarilla y azul sobre una hoja. [Revisar especie]",
+    "url": "entrada.html?slug=monitoreo-acustico-paseriformes",
+    "destacado": false
+  },
+  {
+    "id": 15,
+    "slug": "alfabetizacion-mediatica",
+    "titulo": "Alfabetización mediática en comunidades escolares",
+    "resumen": "Formar audiencias críticas frente a la información digital.",
+    "area": "facsej",
+    "disciplina": "Periodismo",
+    "tipo": "grafico",
+    "fecha": "2026-05-15",
+    "img": "assets/img/entradas/alfabetizacion-mediatica.webp",
+    "alt": "Cubos violetas 3D representando información en red.",
+    "url": "entrada.html?slug=alfabetizacion-mediatica",
+    "destacado": false
+  }
+]
