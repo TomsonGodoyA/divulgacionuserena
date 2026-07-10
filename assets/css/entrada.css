@@ -83,3 +83,78 @@
 .entry-404 h1{font-size:32px;margin-bottom:12px;}
 .entry-404 p{color:var(--c-ink-2);margin-bottom:22px;}
 .entry-404 a{background:var(--c-orange-strong);color:#fff;font-weight:600;padding:12px 22px;border-radius:10px;display:inline-block;}
+
+/* ============================================================
+   BLOQUES ANIMADOS (Sesión 3) — todos temados por var(--fac*)
+   ============================================================ */
+
+/* Dato destacado (contador animado) */
+.e-dato{background:linear-gradient(135deg,var(--fac-soft),#fff 78%);border:1px solid var(--fac-soft);
+  border-radius:18px;padding:36px 30px;text-align:center;}
+.e-dato-num{font-family:var(--font-title);font-weight:900;font-size:clamp(46px,8vw,74px);
+  color:var(--fac-text);line-height:1;font-variant-numeric:tabular-nums;}
+.e-dato-suf{display:block;font-size:16px;font-weight:600;color:var(--c-ink-2);margin-top:8px;letter-spacing:.01em;}
+.e-dato-label{margin:16px auto 0;color:#43506b;max-width:52ch;font-size:16px;}
+
+/* Gauge (arco) */
+.e-gauge{text-align:center;}
+.e-gauge-vis{position:relative;max-width:340px;margin:0 auto;}
+.e-gauge-vis svg{width:100%;height:auto;display:block;overflow:visible;}
+.e-gauge .track{stroke:var(--c-border);}
+.e-gauge .fill{stroke:var(--fac);transition:stroke-dashoffset 1.3s cubic-bezier(.2,.7,.2,1);}
+.e-gauge-num{position:absolute;left:0;right:0;bottom:6px;font-family:var(--font-title);font-weight:900;
+  font-size:clamp(34px,7vw,52px);color:var(--fac-text);line-height:1;font-variant-numeric:tabular-nums;}
+.e-gauge-num .u{font-size:.5em;font-weight:700;color:var(--c-ink-2);margin-left:2px;}
+.e-gauge figcaption{margin-top:14px;}
+
+/* Barra de progreso */
+.e-barra{margin:6px 0;}
+.e-barra-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;gap:14px;}
+.e-barra-lbl{font-weight:600;color:var(--c-ink);}
+.e-barra-val{font-family:var(--font-title);font-weight:900;color:var(--fac-text);font-variant-numeric:tabular-nums;}
+.e-barra-track{height:14px;background:var(--fac-soft);border-radius:99px;overflow:hidden;}
+.e-barra-fill{height:100%;width:0;background:var(--fac);border-radius:99px;
+  transition:width 1.3s cubic-bezier(.2,.7,.2,1);}
+
+/* Mini-barras comparativas */
+.e-mbars-t{font-family:var(--font-title);font-size:20px;font-weight:700;margin:0 0 16px;}
+.e-mbar{margin-bottom:14px;}
+.e-mbar-top{display:flex;justify-content:space-between;font-size:14px;margin-bottom:5px;}
+.e-mbar-top .l{color:var(--c-ink);font-weight:600;}
+.e-mbar-top .v{color:var(--fac-text);font-weight:700;font-variant-numeric:tabular-nums;}
+.e-mbar-track{height:9px;background:var(--fac-soft);border-radius:99px;overflow:hidden;}
+.e-mbar-fill{height:100%;width:0;background:var(--fac);border-radius:99px;transition:width 1.1s cubic-bezier(.2,.7,.2,1);}
+
+/* Acordeón (native details/summary) */
+.e-acc{border-top:1px solid var(--c-border);}
+.e-acc-item{border-bottom:1px solid var(--c-border);}
+.e-acc-item>summary{list-style:none;cursor:pointer;padding:18px 44px 18px 0;position:relative;
+  font-family:var(--font-title);font-size:18px;font-weight:600;color:var(--c-ink);}
+.e-acc-item>summary::-webkit-details-marker{display:none;}
+.e-acc-item>summary::after{content:"+";position:absolute;right:8px;top:50%;transform:translateY(-50%);
+  font-family:var(--font-body);font-size:26px;font-weight:400;color:var(--fac-text);transition:transform .25s;}
+.e-acc-item[open]>summary::after{content:"−";}
+.e-acc-item>summary:hover{color:var(--fac-text);}
+.e-acc-body{padding:0 0 20px;color:#43506b;font-size:16px;line-height:1.65;}
+
+/* Separador full-width con parallax */
+.e-sep{position:relative;width:100vw;margin-left:calc(50% - 50vw);height:clamp(280px,46vh,440px);
+  overflow:hidden;margin-top:2.4em;margin-bottom:2.4em;background:#0a0a0a;}
+.e-sep img{position:absolute;top:-12%;left:0;width:100%;height:124%;object-fit:cover;will-change:transform;}
+.e-sep::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,10,16,.25),rgba(8,10,16,.55));}
+.e-sep-cap{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:24px;}
+.e-sep-cap span{font-family:var(--font-title);font-weight:900;color:#fff;font-size:clamp(26px,4.5vw,44px);
+  text-shadow:0 2px 30px rgba(0,0,0,.5);max-width:20ch;}
+
+/* Notas y créditos + link a la revista */
+.e-notas{background:var(--c-bg);border:1px solid var(--c-border);border-radius:16px;padding:26px 28px;margin-top:2em;}
+.e-notas h3{font-family:var(--font-title);font-size:20px;margin:0 0 14px;}
+.e-notas p{font-size:14.5px;line-height:1.6;color:#43506b;margin:0 0 10px;}
+.e-notas p b{color:var(--c-ink);}
+.e-revista{display:inline-flex;align-items:center;gap:8px;margin-top:8px;background:var(--fac-solid);color:#fff;
+  font-weight:600;font-size:15px;padding:11px 20px;border-radius:10px;transition:filter .2s,transform .2s;}
+.e-revista:hover{filter:brightness(.92);transform:translateY(-1px);}
+
+/* Estado inicial de animación (si hay JS + movimiento permitido) */
+.js-on .anim .e-barra-fill,.js-on .anim .e-mbar-fill{width:0;}

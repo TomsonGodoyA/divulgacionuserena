@@ -57,6 +57,63 @@
         + '<path d="M27 34l18-10-18-10z" fill="#fff"/></svg></button>';
       return '<figure class="media"><div class="evideo" data-yt="'+esc(id)+'"'+(placeholder?' data-ph="1"':'')+'>'
         + (poster?'<img src="'+poster+'" alt="">':'') + play + '</div></figure>';
+    },
+
+    /* ---- Bloques animados (Sesión 3) ---- */
+    dato: function(b){
+      var dec=+b.decimales||0, sep=b.sep?1:0;
+      return '<div class="media anim e-dato">'
+        + '<div class="e-dato-num"><span class="js-count" data-to="'+(+b.valor||0)+'" data-dec="'+dec+'" data-sep="'+sep+'">0</span>'
+        + (b.sufijo?'<span class="e-dato-suf">'+esc(b.sufijo)+'</span>':'') + '</div>'
+        + (b.texto?'<div class="e-dato-label">'+b.texto+'</div>':'') + '</div>';
+    },
+    gauge: function(b){
+      var max=+b.max||100, val=+b.valor||0, dec=+b.decimales||0;
+      return '<figure class="media anim e-gauge js-gauge" data-val="'+val+'" data-max="'+max+'">'
+        + '<div class="e-gauge-vis"><svg viewBox="0 0 220 128">'
+        + '<path class="track" d="M16 116 A94 94 0 0 1 204 116" fill="none" stroke-width="17" stroke-linecap="round"/>'
+        + '<path class="fill" d="M16 116 A94 94 0 0 1 204 116" fill="none" stroke-width="17" stroke-linecap="round"/>'
+        + '</svg><div class="e-gauge-num"><span class="js-count" data-to="'+val+'" data-dec="'+dec+'">0</span>'
+        + (b.unidad?'<span class="u">'+esc(b.unidad)+'</span>':'') + '</div></div>'
+        + (b.etiqueta?'<figcaption>'+esc(b.etiqueta)+'</figcaption>':'') + '</figure>';
+    },
+    barra: function(b){
+      var max=+b.max||100, val=+b.valor||0, dec=+b.decimales||0;
+      var pct=Math.max(0,Math.min(100, max?val/max*100:0));
+      return '<div class="anim e-barra">'
+        + '<div class="e-barra-top"><span class="e-barra-lbl">'+esc(b.etiqueta||'')+'</span>'
+        + '<span class="e-barra-val"><span class="js-count" data-to="'+val+'" data-dec="'+dec+'">0</span>'+(b.sufijo?esc(b.sufijo):'')+'</span></div>'
+        + '<div class="e-barra-track"><div class="e-barra-fill js-bar" data-pct="'+pct.toFixed(2)+'"></div></div></div>';
+    },
+    'mini-barras': function(b){
+      var items=b.items||[];
+      var maxv=Math.max.apply(null, items.map(function(it){return +it.valor||0;}).concat([1]));
+      var rows=items.map(function(it){
+        var pct=Math.max(0,Math.min(100,(+it.valor||0)/(it.max?+it.max:maxv)*100)), dec=+it.decimales||0;
+        return '<div class="e-mbar"><div class="e-mbar-top"><span class="l">'+esc(it.etiqueta)+'</span>'
+          + '<span class="v"><span class="js-count" data-to="'+(+it.valor||0)+'" data-dec="'+dec+'">0</span>'+(it.sufijo?esc(it.sufijo):'')+'</span></div>'
+          + '<div class="e-mbar-track"><div class="e-mbar-fill js-bar" data-pct="'+pct.toFixed(2)+'"></div></div></div>';
+      }).join('');
+      return '<div class="anim e-mbars">'+(b.titulo?'<div class="e-mbars-t">'+esc(b.titulo)+'</div>':'')+rows+'</div>';
+    },
+    acordeon: function(b){
+      var items=(b.items||[]).map(function(it){
+        return '<details class="e-acc-item"><summary>'+esc(it.titulo)+'</summary>'
+          + '<div class="e-acc-body">'+(it.contenido||'')+'</div></details>';
+      }).join('');
+      return '<div class="e-acc">'+items+'</div>';
+    },
+    separador: function(b){
+      return '<div class="e-sep"><img class="js-parallax" src="'+esc(b.src)+'" alt="'+esc(b.alt)+'">'
+        + (b.titulo?'<div class="e-sep-cap"><span>'+esc(b.titulo)+'</span></div>':'') + '</div>';
+    },
+    notas: function(b){
+      var out='<div class="e-notas"><h3>'+esc(b.titulo||'Notas y créditos')+'</h3>';
+      if(b.creditoFoto) out+='<p><b>Crédito fotográfico:</b> '+b.creditoFoto+'</p>';
+      if(b.notasTecnicas) out+='<p><b>Notas técnicas:</b> '+b.notasTecnicas+'</p>';
+      if(b.revista && b.revista.url) out+='<a class="e-revista" href="'+esc(b.revista.url)+'" target="_blank" rel="noopener">'
+        + esc(b.revista.titulo||'Revisar la investigación en la revista')+' →</a>';
+      return out+'</div>';
     }
   };
 
@@ -129,6 +186,8 @@
 
     initCarousels();
     initVideos();
+    initAnimations();
+    initParallax();
   }
 
   function notFound(){
@@ -174,6 +233,65 @@
           +'?autoplay=1&rel=0" title="Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
       });
     });
+  }
+
+  /* ---------- Animaciones (contadores, gauge, barras, parallax) ---------- */
+  function fmtNum(n, dec, sep){
+    var s = dec>0 ? n.toFixed(dec) : String(Math.round(n));
+    if(dec>0){ var pt=s.split('.'); if(sep) pt[0]=pt[0].replace(/\B(?=(\d{3})+(?!\d))/g,'.'); s=pt[0]+','+pt[1]; }
+    else if(sep){ s=s.replace(/\B(?=(\d{3})+(?!\d))/g,'.'); }
+    return s;
+  }
+  function countUp(el){
+    var to=parseFloat(el.dataset.to)||0, dec=parseInt(el.dataset.dec||'0',10), sep=el.dataset.sep==='1';
+    if(reduce){ el.textContent=fmtNum(to,dec,sep); return; }
+    var t0=performance.now(), dur=1300;
+    (function step(now){
+      var p=Math.min(1,(now-t0)/dur), e=1-Math.pow(1-p,3);
+      el.textContent=fmtNum(to*e,dec,sep);
+      if(p<1) requestAnimationFrame(step);
+    })(performance.now());
+  }
+  function fillGauge(g){
+    var path=g.querySelector('.fill'); if(!path) return;
+    var val=parseFloat(g.dataset.val)||0, max=parseFloat(g.dataset.max)||100;
+    var frac=Math.max(0,Math.min(1, max?val/max:0));
+    var len=path.getTotalLength();
+    path.style.strokeDasharray=len;
+    path.style.strokeDashoffset=len;
+    if(reduce){ path.style.transition='none'; path.style.strokeDashoffset=len*(1-frac); return; }
+    requestAnimationFrame(function(){ path.style.strokeDashoffset=len*(1-frac); });
+  }
+  function runBlock(blk){
+    blk.querySelectorAll('.js-count').forEach(countUp);
+    blk.querySelectorAll('.js-bar').forEach(function(bar){ bar.style.width=parseFloat(bar.dataset.pct||'0')+'%'; });
+    blk.querySelectorAll('.js-gauge').forEach(fillGauge);
+    if(blk.classList.contains('js-gauge')) fillGauge(blk);
+  }
+  function initAnimations(){
+    var blocks=root.querySelectorAll('.anim'); if(!blocks.length) return;
+    if(reduce || !('IntersectionObserver' in window)){ blocks.forEach(runBlock); return; }
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ runBlock(e.target); io.unobserve(e.target); } });
+    }, {threshold:.35});
+    blocks.forEach(function(b){ io.observe(b); });
+  }
+  function initParallax(){
+    if(reduce) return;
+    var imgs=root.querySelectorAll('.js-parallax'); if(!imgs.length) return;
+    var ticking=false;
+    function upd(){
+      imgs.forEach(function(img){
+        var sep=img.closest('.e-sep'); if(!sep) return;
+        var r=sep.getBoundingClientRect();
+        if(r.bottom<0 || r.top>innerHeight) return;
+        var prog=(r.top+r.height/2 - innerHeight/2)/innerHeight;
+        img.style.transform='translateY('+(prog*-42).toFixed(1)+'px)';
+      });
+      ticking=false;
+    }
+    addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(upd); ticking=true; } },{passive:true});
+    upd();
   }
 
   /* ---------- Carga ---------- */

@@ -28,34 +28,93 @@
     "alt": "Papaya cortada por la mitad mostrando sus semillas, sobre fondo claro.",
     "url": "entrada.html?slug=aceite-papaya",
     "destacado": false,
-    "creditos": "Investigación de la Universidad de La Serena, difundida por la Oficina de Divulgación y Difusión de la Ciencia y la Tecnología.",
     "bloques": [
       {
         "tipo": "parrafo",
-        "texto": "El aceite de las semillas de papaya concentra <b>compuestos bioactivos</b> de alto valor, pero es muy sensible a la oxidación. Encapsularlo permite protegerlo y mejorar su aprovechamiento en el organismo."
+        "texto": "La papaya es un <b>fruto identitario del norte de Chile</b>. Sus semillas, habitualmente descartadas, contienen un aceite rico en compuestos bioactivos de alto valor nutricional."
+      },
+      {
+        "tipo": "separador",
+        "src": "assets/img/entradas/aceite-papaya/separador.webp",
+        "titulo": "El desafío de aprovechar lo que se descarta",
+        "alt": "Cultivo de papayas en el valle."
       },
       {
         "tipo": "subtitulo",
-        "texto": "El desafío de estabilizar el aceite"
+        "texto": "Pero hay un problema"
       },
       {
         "tipo": "parrafo",
-        "texto": "El equipo desarrolló macrocápsulas capaces de mantener el aceite estable y liberarlo de forma controlada en el tracto intestinal, usando metodología de superficie de respuesta (RSM)."
+        "texto": "Ese aceite es muy <b>sensible a la oxidación</b>: se degrada con facilidad al exponerse a la luz, el oxígeno y el calor, perdiendo sus propiedades antes de llegar al organismo."
+      },
+      {
+        "tipo": "subtitulo",
+        "texto": "¿Y si se encapsula el aceite?"
+      },
+      {
+        "tipo": "parrafo",
+        "texto": "El equipo desarrolló <b>macrocápsulas</b> mediante gelación ionotrópica, capaces de proteger el aceite y liberarlo de forma controlada en el tracto intestinal. La formulación se optimizó con metodología de superficie de respuesta (RSM)."
       },
       {
         "tipo": "imagen",
-        "src": "assets/img/entradas/aceite-papaya/foto-01.webp",
-        "alt": "Papaya cortada mostrando sus semillas.",
-        "pie": "Las semillas de papaya, habitualmente descartadas, son la materia prima del estudio."
+        "src": "assets/img/entradas/aceite-papaya/gelacion.webp",
+        "alt": "Diagrama del proceso de gelación ionotrópica.",
+        "pie": "Esquema del proceso de encapsulación por gelación ionotrópica."
       },
       {
-        "tipo": "cita",
-        "texto": "La encapsulación no solo protege el aceite: nos permite decidir dónde y cuándo se libera en el organismo.",
-        "autor": "Dra. Vilbett Briones"
+        "tipo": "subtitulo",
+        "texto": "Resultados destacados"
+      },
+      {
+        "tipo": "gauge",
+        "valor": 75.36,
+        "max": 100,
+        "decimales": 2,
+        "unidad": "%",
+        "etiqueta": "Bioaccesibilidad del aceite encapsulado"
+      },
+      {
+        "tipo": "barra",
+        "valor": 52.23,
+        "max": 100,
+        "decimales": 2,
+        "sufijo": "%",
+        "etiqueta": "Liberación intestinal controlada"
+      },
+      {
+        "tipo": "acordeon",
+        "items": [
+          {
+            "titulo": "Macrocápsulas estables",
+            "contenido": "<p>Las macrocápsulas mantuvieron el aceite protegido de la oxidación durante el almacenamiento.</p>"
+          },
+          {
+            "titulo": "Liberación controlada",
+            "contenido": "<p>Un <b>52,23%</b> del aceite se liberó específicamente en el tracto intestinal, donde es mejor aprovechado.</p>"
+          },
+          {
+            "titulo": "Optimización por RSM",
+            "contenido": "<p>La metodología de superficie de respuesta permitió encontrar la formulación óptima variando concentración y proporciones.</p>"
+          },
+          {
+            "titulo": "Alta bioaccesibilidad",
+            "contenido": "<p>Se alcanzó una <b>bioaccesibilidad del 75,36%</b>, cifra que abre la puerta a aplicaciones en alimentos funcionales.</p>"
+          }
+        ]
       },
       {
         "tipo": "parrafo",
-        "texto": "Los resultados muestran una <b>bioaccesibilidad del 75,36%</b> y una liberación intestinal del 52,23%, cifras que abren la puerta a aplicaciones en alimentos funcionales."
+        "texto": "Estos resultados posicionan a las semillas de papaya como una materia prima con <b>potencial nutracéutico</b> real, dándole valor a un subproducto agrícola de la región."
+      },
+      {
+        "tipo": "notas",
+        "titulo": "Notas y créditos",
+        "creditoFoto": "Fotografías gentileza del equipo de investigación, Facultad de Ingeniería USerena.",
+        "notasTecnicas": "Bioaccesibilidad y liberación evaluadas mediante digestión in vitro. Formulación optimizada por metodología de superficie de respuesta (RSM).",
+        "revista": {
+          "titulo": "Revisar la investigación en la revista científica",
+          "url": "#"
+        }
       }
     ]
   },
