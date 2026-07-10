@@ -116,7 +116,7 @@
         + '<h1>'+esc(entry.titulo)+'</h1>'
         + '<div class="entry-meta">'+meta+'</div>'
       + '</div></header>'
-      + (entry.img ? '<figure class="entry-figure"><img src="'+esc(entry.img)+'" alt="'+esc(entry.alt)+'"></figure>' : '')
+      + ((entry.hero||entry.img) ? '<figure class="entry-figure"><img src="'+esc(entry.hero||entry.img)+'" alt="'+esc(entry.alt)+'"></figure>' : '')
       + '<article class="entry-body">'+renderBloques(entry.bloques)
         + (entry.creditos
             ? '<div class="entry-creditos">'+entry.creditos
