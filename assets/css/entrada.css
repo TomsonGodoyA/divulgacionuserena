@@ -158,3 +158,21 @@
 
 /* Estado inicial de animación (si hay JS + movimiento permitido) */
 .js-on .anim .e-barra-fill,.js-on .anim .e-mbar-fill{width:0;}
+
+/* ============================================================
+   ENCABEZADO DE ENTRADA DE VIDEO (estilo Quanta) — auto si tipo:audiovisual + youtubeId
+   ============================================================ */
+.entry-vhead{background:var(--fac-soft);padding:118px 0 46px;}
+.ev-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:38px;align-items:center;}
+@media(max-width:860px){.ev-grid{grid-template-columns:1fr;gap:22px;}}
+.ev-player .evideo{aspect-ratio:16/9;border-radius:14px;box-shadow:0 26px 54px -30px rgba(0,0,0,.55);}
+.ev-dur{position:absolute;right:10px;bottom:10px;z-index:3;background:rgba(7,8,12,.85);color:#fff;
+  font-size:12px;font-weight:600;padding:3px 8px;border-radius:6px;font-variant-numeric:tabular-nums;}
+.ev-info .entry-crumb{margin-bottom:12px;}
+.ev-info .entry-eyebrow{margin-bottom:8px;}
+.ev-info h1{font-family:var(--font-title);font-size:clamp(26px,3.3vw,40px);font-weight:900;
+  line-height:1.12;margin:0 0 12px;color:var(--c-ink);}
+.ev-info .entry-meta{justify-content:flex-start;margin-bottom:16px;}
+.ev-resumen{font-size:16px;line-height:1.65;color:#3f4655;margin:0 0 14px;}
+.ev-invitado{font-size:15px;color:var(--c-ink);margin:0;}
+.ev-invitado b{color:var(--fac-text);}

@@ -21,6 +21,17 @@
 
   function getSlug(){ return new URLSearchParams(location.search).get('slug') || ''; }
 
+  var YT_PLAY = '<button class="evbtn" aria-label="Reproducir video"><svg viewBox="0 0 68 48" fill="none">'
+    + '<path d="M66.5 7.5a8 8 0 0 0-5.6-5.7C56 .5 34 .5 34 .5s-22 0-26.9 1.3A8 8 0 0 0 1.5 7.5 83 83 0 0 0 .2 24a83 83 0 0 0 1.3 16.5 8 8 0 0 0 5.6 5.7C12 47.5 34 47.5 34 47.5s22 0 26.9-1.3a8 8 0 0 0 5.6-5.7A83 83 0 0 0 67.8 24a83 83 0 0 0-1.3-16.5z" fill="#f00"/>'
+    + '<path d="M27 34l18-10-18-10z" fill="#fff"/></svg></button>';
+  /* Acepta ID de 11 caracteres o URL de YouTube (youtu.be / watch?v= / embed) */
+  function ytId(s){
+    if(!s) return '';
+    var m = String(s).match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/);
+    if(m) return m[1];
+    return /^[\w-]{11}$/.test(s) ? s : '';
+  }
+
   /* ---------- Renderizadores de bloque ---------- */
   /* Nota: 'texto' en parrafo/cita admite HTML inline (contenido de confianza, escrito por la Oficina). */
   var BLOQUES = {
@@ -49,14 +60,11 @@
         + (b.pie?'<figcaption>'+esc(b.pie)+'</figcaption>':'') + '</figure>';
     },
     video: function(b){
-      var id = b.youtubeId||'';
-      var placeholder = (!id || id==='YT_ID_AQUI');
-      var poster = b.poster ? esc(b.poster) : (id && !placeholder ? 'https://img.youtube.com/vi/'+esc(id)+'/hqdefault.jpg' : '');
-      var play = '<button class="evbtn" aria-label="Reproducir video"><svg viewBox="0 0 68 48" fill="none">'
-        + '<path d="M66.5 7.5a8 8 0 0 0-5.6-5.7C56 .5 34 .5 34 .5s-22 0-26.9 1.3A8 8 0 0 0 1.5 7.5 83 83 0 0 0 .2 24a83 83 0 0 0 1.3 16.5 8 8 0 0 0 5.6 5.7C12 47.5 34 47.5 34 47.5s22 0 26.9-1.3a8 8 0 0 0 5.6-5.7A83 83 0 0 0 67.8 24a83 83 0 0 0-1.3-16.5z" fill="#f00"/>'
-        + '<path d="M27 34l18-10-18-10z" fill="#fff"/></svg></button>';
+      var id = ytId(b.youtubeId);
+      var placeholder = !id;
+      var poster = b.poster ? esc(b.poster) : (id ? 'https://img.youtube.com/vi/'+id+'/hqdefault.jpg' : '');
       return '<figure class="media"><div class="evideo" data-yt="'+esc(id)+'"'+(placeholder?' data-ph="1"':'')+'>'
-        + (poster?'<img src="'+poster+'" alt="">':'') + play + '</div></figure>';
+        + (poster?'<img src="'+poster+'" alt="">':'') + YT_PLAY + '</div></figure>';
     },
 
     /* ---- Bloques animados (Sesión 3) ---- */
@@ -164,22 +172,43 @@
 
     var ccIcon = '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9.5 10.6a2 2 0 1 0 0 2.8l-1-.7a1 1 0 1 1 0-1.4l1-.7zM15 10.6a2 2 0 1 0 0 2.8l-1-.7a1 1 0 1 1 0-1.4l1-.7z"/></svg>';
 
-    root.innerHTML =
-      '<header class="entry-head"><div class="inner">'
+    var isVideo = entry.tipo==='audiovisual' && ytId(entry.youtubeId);
+    var creditosHTML = entry.creditos
+      ? '<div class="entry-creditos">'+entry.creditos+'<div class="cc">'+ccIcon+' Contenido bajo licencia Creative Commons</div></div>' : '';
+    var hasBloques = Array.isArray(entry.bloques) && entry.bloques.length;
+    var bodyHTML = (hasBloques || creditosHTML)
+      ? '<article class="entry-body">'+(hasBloques?renderBloques(entry.bloques):'')+creditosHTML+'</article>' : '';
+
+    var headHTML;
+    if(isVideo){
+      var inv = entry.invitado ? (Array.isArray(entry.invitado)?entry.invitado:[entry.invitado]) : [];
+      var invLabel = inv.length>1 ? 'Invitados' : 'Invitado';
+      headHTML = '<header class="entry-vhead"><div class="wrap ev-grid">'
+        + '<div class="ev-player"><div class="evideo" data-yt="'+esc(ytId(entry.youtubeId))+'">'
+          + (entry.img?'<img src="'+esc(entry.img)+'" alt="'+esc(entry.alt)+'">':'') + YT_PLAY
+          + (entry.duracion?'<span class="ev-dur">'+esc(entry.duracion)+'</span>':'') + '</div></div>'
+        + '<div class="ev-info">'
+          + '<nav class="entry-crumb" aria-label="Ruta"><a href="index.html">Inicio</a>'
+          + '<span class="sep">»</span><a href="repositorio.html">Repositorio</a></nav>'
+          + '<div class="entry-eyebrow">'+esc(entry.disciplina)+'</div>'
+          + '<h1>'+esc(entry.titulo)+'</h1>'
+          + '<div class="entry-meta">'+meta+'</div>'
+          + (entry.resumen?'<p class="ev-resumen">'+esc(entry.resumen)+'</p>':'')
+          + (inv.length?'<p class="ev-invitado"><b>'+invLabel+':</b> '+esc(inv.join(' · '))+'</p>':'')
+          + '</div></div></header>';
+    } else {
+      headHTML = '<header class="entry-head"><div class="inner">'
         + '<nav class="entry-crumb" aria-label="Ruta"><a href="index.html">Inicio</a>'
         + '<span class="sep">»</span><a href="repositorio.html">Repositorio</a>'
         + '<span class="sep">»</span><span class="cur">'+esc(entry.titulo)+'</span></nav>'
         + '<div class="entry-eyebrow">'+esc(entry.disciplina)+'</div>'
         + '<h1>'+esc(entry.titulo)+'</h1>'
         + '<div class="entry-meta">'+meta+'</div>'
-      + '</div></header>'
-      + ((entry.hero||entry.img) ? '<figure class="entry-figure"><img src="'+esc(entry.hero||entry.img)+'" alt="'+esc(entry.alt)+'"></figure>' : '')
-      + '<article class="entry-body">'+renderBloques(entry.bloques)
-        + (entry.creditos
-            ? '<div class="entry-creditos">'+entry.creditos
-              + '<div class="cc">'+ccIcon+' Contenido bajo licencia Creative Commons</div></div>'
-            : '')
-      + '</article>'
+        + '</div></header>'
+        + ((entry.hero||entry.img) ? '<figure class="entry-figure"><img src="'+esc(entry.hero||entry.img)+'" alt="'+esc(entry.alt)+'"></figure>' : '');
+    }
+
+    root.innerHTML = headHTML + bodyHTML
       + '<section class="relacionados"><h2>'+relTitle+'</h2>'
         + '<p class="rsub">Sigue explorando el repositorio.</p>'
         + '<div class="rgrid3">'+rels.map(relCard).join('')+'</div></section>';
