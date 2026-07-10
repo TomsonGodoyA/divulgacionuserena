@@ -8,7 +8,7 @@
     "disciplina": "Ped. en Castellano y Filosofía",
     "tipo": "grafico",
     "fecha": "2026-06-30",
-    "img": "assets/img/entradas/analisis-discurso-tesis.webp",
+    "img": "assets/img/entradas/analisis-discurso-tesis/portada.webp",
     "alt": "Personas conversando frente a un notebook en una reunión de trabajo.",
     "url": "entrada.html?slug=analisis-discurso-tesis",
     "destacado": false
@@ -22,7 +22,7 @@
     "disciplina": "Ing. en Alimentos",
     "tipo": "grafico",
     "fecha": "2026-06-28",
-    "img": "assets/img/entradas/aceite-papaya.webp",
+    "img": "assets/img/entradas/aceite-papaya/portada.webp",
     "alt": "Papaya cortada por la mitad mostrando sus semillas, sobre fondo claro.",
     "url": "entrada.html?slug=aceite-papaya",
     "destacado": false,
@@ -42,7 +42,7 @@
       },
       {
         "tipo": "imagen",
-        "src": "assets/img/entradas/aceite-papaya.webp",
+        "src": "assets/img/entradas/aceite-papaya/foto-01.webp",
         "alt": "Papaya cortada mostrando sus semillas.",
         "pie": "Las semillas de papaya, habitualmente descartadas, son la materia prima del estudio."
       },
@@ -66,7 +66,7 @@
     "disciplina": "Periodismo",
     "tipo": "audiovisual",
     "fecha": "2026-06-26",
-    "img": "assets/img/entradas/pluralismo-ecosistemas-digitales.webp",
+    "img": "assets/img/entradas/pluralismo-ecosistemas-digitales/portada.webp",
     "alt": "Ilustración 3D de cubos violetas interconectados representando redes digitales.",
     "url": "entrada.html?slug=pluralismo-ecosistemas-digitales",
     "youtubeId": "YT_ID_AQUI",
@@ -81,7 +81,7 @@
     "disciplina": "Agronomía",
     "tipo": "grafico",
     "fecha": "2026-06-24",
-    "img": "assets/img/entradas/buenas-practicas-forestales.webp",
+    "img": "assets/img/entradas/buenas-practicas-forestales/portada.webp",
     "alt": "Bosque de coníferas con luz filtrándose entre los árboles.",
     "url": "entrada.html?slug=buenas-practicas-forestales",
     "destacado": false
@@ -95,7 +95,7 @@
     "disciplina": "Astronomía",
     "tipo": "audiovisual",
     "fecha": "2026-06-22",
-    "img": "assets/img/entradas/galaxias-anilladas.webp",
+    "img": "assets/img/entradas/galaxias-anilladas/portada.webp",
     "alt": "Representación de una galaxia espiral vista de frente.",
     "url": "entrada.html?slug=galaxias-anilladas",
     "youtubeId": "YT_ID_AQUI",
@@ -105,7 +105,7 @@
       {
         "tipo": "video",
         "youtubeId": "YT_ID_AQUI",
-        "poster": "assets/img/entradas/galaxias-anilladas.webp"
+        "poster": "assets/img/entradas/galaxias-anilladas/portada.webp"
       },
       {
         "tipo": "parrafo",
@@ -130,7 +130,7 @@
     "disciplina": "Diseño",
     "tipo": "grafico",
     "fecha": "2026-06-19",
-    "img": "assets/img/entradas/prototipado-impacto-social.webp",
+    "img": "assets/img/entradas/prototipado-impacto-social/portada.webp",
     "alt": "Manos bocetando sillas sobre planos de diseño de mobiliario.",
     "url": "entrada.html?slug=prototipado-impacto-social",
     "destacado": false
@@ -144,7 +144,7 @@
     "disciplina": "Biología",
     "tipo": "podcast",
     "fecha": "2026-06-16",
-    "img": "assets/img/entradas/aves-cantoras-cambio-climatico.webp",
+    "img": "assets/img/entradas/aves-cantoras-cambio-climatico/portada.webp",
     "alt": "Ave paseriforme de pecho amarillo y cabeza azul posada sobre una hoja. [Revisar especie]",
     "url": "entrada.html?slug=aves-cantoras-cambio-climatico",
     "destacado": true,
@@ -163,11 +163,11 @@
         "pie": "Registro fotográfico del equipo. [Revisar especies]",
         "imagenes": [
           {
-            "src": "assets/img/entradas/aves-cantoras-cambio-climatico.webp",
+            "src": "assets/img/entradas/aves-cantoras-cambio-climatico/foto-01.webp",
             "alt": "Ave paseriforme de pecho amarillo. [Revisar especie]"
           },
           {
-            "src": "assets/img/entradas/monitoreo-acustico-paseriformes.webp",
+            "src": "assets/img/entradas/aves-cantoras-cambio-climatico/foto-02.webp",
             "alt": "Ave posada sobre una hoja. [Revisar especie]"
           }
         ]
@@ -192,7 +192,7 @@
     "disciplina": "Derecho",
     "tipo": "podcast",
     "fecha": "2026-06-13",
-    "img": "assets/img/entradas/regulacion-plataformas-digitales.webp",
+    "img": "assets/img/entradas/regulacion-plataformas-digitales/portada.webp",
     "alt": "Ilustración 3D de cubos violetas interconectados.",
     "url": "entrada.html?slug=regulacion-plataformas-digitales",
     "destacado": false
@@ -206,7 +206,7 @@
     "disciplina": "Agronomía",
     "tipo": "audiovisual",
     "fecha": "2026-06-10",
-    "img": "assets/img/entradas/bosque-nativo-carbono.webp",
+    "img": "assets/img/entradas/bosque-nativo-carbono/portada.webp",
     "alt": "Bosque nativo verde con vegetación baja.",
     "url": "entrada.html?slug=bosque-nativo-carbono",
     "youtubeId": "YT_ID_AQUI",
@@ -221,7 +221,7 @@
     "disciplina": "Filosofía",
     "tipo": "podcast",
     "fecha": "2026-06-06",
-    "img": "assets/img/entradas/retorica-discurso-publico.webp",
+    "img": "assets/img/entradas/retorica-discurso-publico/portada.webp",
     "alt": "Reunión de trabajo con notebook sobre la mesa.",
     "url": "entrada.html?slug=retorica-discurso-publico",
     "destacado": false
@@ -235,7 +235,7 @@
     "disciplina": "Ing. en Alimentos",
     "tipo": "audiovisual",
     "fecha": "2026-06-03",
-    "img": "assets/img/entradas/compuestos-bioactivos-frutos.webp",
+    "img": "assets/img/entradas/compuestos-bioactivos-frutos/portada.webp",
     "alt": "Papaya partida sobre fondo claro.",
     "url": "entrada.html?slug=compuestos-bioactivos-frutos",
     "youtubeId": "YT_ID_AQUI",
@@ -250,7 +250,7 @@
     "disciplina": "Astronomía",
     "tipo": "grafico",
     "fecha": "2026-05-29",
-    "img": "assets/img/entradas/cartografia-via-lactea.webp",
+    "img": "assets/img/entradas/cartografia-via-lactea/portada.webp",
     "alt": "Galaxia espiral sobre fondo oscuro.",
     "url": "entrada.html?slug=cartografia-via-lactea",
     "destacado": false
@@ -264,7 +264,7 @@
     "disciplina": "Diseño",
     "tipo": "audiovisual",
     "fecha": "2026-05-24",
-    "img": "assets/img/entradas/mobiliario-sostenible.webp",
+    "img": "assets/img/entradas/mobiliario-sostenible/portada.webp",
     "alt": "Bocetos de sillas y planos de diseño de mobiliario.",
     "url": "entrada.html?slug=mobiliario-sostenible",
     "youtubeId": "YT_ID_AQUI",
@@ -279,7 +279,7 @@
     "disciplina": "Biología",
     "tipo": "grafico",
     "fecha": "2026-05-20",
-    "img": "assets/img/entradas/monitoreo-acustico-paseriformes.webp",
+    "img": "assets/img/entradas/monitoreo-acustico-paseriformes/portada.webp",
     "alt": "Ave paseriforme amarilla y azul sobre una hoja. [Revisar especie]",
     "url": "entrada.html?slug=monitoreo-acustico-paseriformes",
     "destacado": false
@@ -293,7 +293,7 @@
     "disciplina": "Periodismo",
     "tipo": "grafico",
     "fecha": "2026-05-15",
-    "img": "assets/img/entradas/alfabetizacion-mediatica.webp",
+    "img": "assets/img/entradas/alfabetizacion-mediatica/portada.webp",
     "alt": "Cubos violetas 3D representando información en red.",
     "url": "entrada.html?slug=alfabetizacion-mediatica",
     "destacado": false
