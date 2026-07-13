@@ -55,6 +55,18 @@
 .entry-body figure>img{width:100%;border-radius:12px;display:block;}
 .entry-body figcaption{font-size:13.5px;color:var(--c-ink-2);margin-top:10px;text-align:center;}
 
+/* Imagen acotada a la columna de lectura (ancho:"texto") */
+.entry-body .media--texto{width:min(620px,calc(100vw - 40px));}
+
+/* Leyenda numerada bajo una imagen (círculos 1·2·3 con etiqueta y subtexto) */
+.img-leyenda{display:flex;flex-wrap:wrap;gap:12px 26px;justify-content:center;margin-top:16px;text-align:left;}
+.il-item{display:flex;align-items:flex-start;gap:9px;}
+.il-num{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--fac);color:#fff;
+  font-family:var(--font-body);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+.il-txt{font-size:13.5px;line-height:1.35;color:var(--c-ink);}
+.il-txt b{display:block;font-weight:700;}
+.il-sub{color:var(--c-ink-2);font-size:12.5px;}
+
 /* Carrusel de bloque */
 .ecarousel{position:relative;border-radius:12px;overflow:hidden;background:#0a0a0a;}
 .ecarousel .eslide{display:none;}

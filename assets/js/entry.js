@@ -55,8 +55,18 @@
       return '<blockquote>'+(b.texto||'')+(b.autor?'<cite>'+esc(b.autor)+'</cite>':'')+'</blockquote>';
     },
     imagen: function(b){
-      return '<figure class="media"><img src="'+esc(b.src)+'" alt="'+esc(b.alt)+'" loading="lazy">'
-        + (b.pie?'<figcaption>'+esc(b.pie)+'</figcaption>':'') + '</figure>';
+      var cls = 'media' + (b.ancho==='texto' ? ' media--texto' : '');
+      var cap = '';
+      if(Array.isArray(b.leyenda) && b.leyenda.length){
+        cap = '<figcaption class="img-leyenda">' + b.leyenda.map(function(it){
+          return '<span class="il-item">'
+            + (it.n!=null?'<span class="il-num">'+esc(it.n)+'</span>':'')
+            + '<span class="il-txt"><b>'+esc(it.label)+'</b>'
+            + (it.sub?'<span class="il-sub">'+esc(it.sub)+'</span>':'') + '</span></span>';
+        }).join('') + '</figcaption>';
+      } else if(b.pie){ cap = '<figcaption>'+esc(b.pie)+'</figcaption>'; }
+      return '<figure class="'+cls+'"><img src="'+esc(b.src)+'" alt="'+esc(b.alt)+'" loading="lazy">'
+        + cap + '</figure>';
     },
     infografia: function(b){
       return '<figure class="media infografia"><img src="'+esc(b.src)+'" alt="'+esc(b.alt)+'" loading="lazy">'
@@ -173,6 +183,9 @@
 
     notas: function(b){
       var out='<div class="e-notas"><h3>'+esc(b.titulo||'Notas y créditos')+'</h3>';
+      var acad = b.academicos || b.academica || b['académica'] || b['académicos'];
+      if(acad){ var al=Array.isArray(acad)?acad:[acad];
+        out+='<p><b>'+(al.length>1?'Académicos participantes:':'Académica/o participante:')+'</b> '+al.map(esc).join(' · ')+'</p>'; }
       if(b.creditoFoto) out+='<p><b>Crédito fotográfico:</b> '+b.creditoFoto+'</p>';
       if(b.notasTecnicas) out+='<p><b>Notas técnicas:</b> '+b.notasTecnicas+'</p>';
       if(b.revista && b.revista.url) out+='<a class="e-revista" href="'+esc(b.revista.url)+'" target="_blank" rel="noopener">'

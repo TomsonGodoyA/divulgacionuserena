@@ -82,8 +82,14 @@
     },
     {
       "tipo": "imagen",
+      "ancho": "texto",
       "src": "assets/img/entradas/aceite-papaya/gelacion-esquema.webp",
-      "alt": "Capas de recubrimiento: caseína (proteína de la leche), alginato de sodio (derivado de algas) y el aceite en el centro"
+      "alt": "Capas de recubrimiento: caseína, alginato de sodio y el aceite en el centro",
+      "leyenda": [
+        { "n": "1", "label": "Caseína", "sub": "una proteína de la leche" },
+        { "n": "2", "label": "Alginato de sodio", "sub": "derivado de algas" },
+        { "n": "3", "label": "Aceite" }
+      ]
     },
     {
       "tipo": "separador",
@@ -135,9 +141,9 @@
       "_nota": "CONSERVA tu bloque 'notas' actual con el link real de ScienceDirect; este es solo un recordatorio de posición.",
       "tipo": "notas",
       "titulo": "Notas y créditos",
+      "academicos": "Dra. Vilbett Briones Labarca",
       "creditoFoto": "(mantén el tuyo)",
       "notasTecnicas": "(mantén las tuyas)",
-      "académica": "Dra. Vilbett Briones",
       "revista": { "titulo": "Revisar la investigación en la revista", "url": "https://www.sciencedirect.com/science/article/pii/S2666833524000078?via%3Dihub" }
     }
   ]
