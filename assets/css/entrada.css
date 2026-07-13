@@ -176,3 +176,8 @@
 .ev-resumen{font-size:16px;line-height:1.65;color:#3f4655;margin:0 0 14px;}
 .ev-invitado{font-size:15px;color:var(--c-ink);margin:0;}
 .ev-invitado b{color:var(--fac-text);}
+
+/* Rótulo "Académicos participantes" al pie de la entrada */
+.entry-academicos{max-width:720px;margin:26px auto 0;padding:14px 24px 0;border-top:1px solid var(--c-border);
+  font-size:14px;color:var(--c-ink-2);}
+.entry-academicos .l{font-weight:700;color:var(--fac-text);text-transform:uppercase;letter-spacing:.06em;font-size:12px;}

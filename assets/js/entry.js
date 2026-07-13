@@ -178,6 +178,9 @@
     var hasBloques = Array.isArray(entry.bloques) && entry.bloques.length;
     var bodyHTML = (hasBloques || creditosHTML)
       ? '<article class="entry-body">'+(hasBloques?renderBloques(entry.bloques):'')+creditosHTML+'</article>' : '';
+    var acadList = (!isVideo && entry.academicos) ? (Array.isArray(entry.academicos)?entry.academicos:[entry.academicos]) : [];
+    var acadHTML = acadList.length
+      ? '<div class="entry-academicos"><span class="l">Académicos participantes:</span> '+acadList.map(esc).join(' · ')+'</div>' : '';
 
     var headHTML;
     if(isVideo){
@@ -208,7 +211,7 @@
         + ((entry.hero||entry.img) ? '<figure class="entry-figure"><img src="'+esc(entry.hero||entry.img)+'" alt="'+esc(entry.alt)+'"></figure>' : '');
     }
 
-    root.innerHTML = headHTML + bodyHTML
+    root.innerHTML = headHTML + bodyHTML + acadHTML
       + '<section class="relacionados"><h2>'+relTitle+'</h2>'
         + '<p class="rsub">Sigue explorando el repositorio.</p>'
         + '<div class="rgrid3">'+rels.map(relCard).join('')+'</div></section>';

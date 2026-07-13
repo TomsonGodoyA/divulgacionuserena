@@ -98,9 +98,12 @@
         "notasTecnicas": "Bioaccesibilidad y liberación evaluadas mediante digestión in vitro. Formulación optimizada por metodología de superficie de respuesta (RSM).",
         "revista": {
           "titulo": "Revisar la investigación en la revista científica",
-          "url": "#"
+          "url": "https://www.sciencedirect.com/science/article/pii/S2666833524000078?via%3Dihub"
         }
       }
+    ],
+    "academicos": [
+      "Dra. Vilbett Briones"
     ]
   },
   {
@@ -110,7 +113,7 @@
     "resumen": "Rasgos que determinan el riesgo de extinción en paseriformes.",
     "area": "ciencias",
     "disciplina": "Biología",
-    "tipo": "podcast",
+    "tipo": "grafico",
     "fecha": "2026-06-16",
     "img": "assets/img/entradas/aves-cantoras-cambio-climatico/portada.webp",
     "hero": "assets/img/entradas/aves-cantoras-cambio-climatico/hero.webp",

@@ -33,23 +33,6 @@
     }
     restart();
   }
-
-  /* ---- conteo de métricas: la sección lleva class="reveal" data-onreveal="metrics" ---- */
-  var done = false;
-  document.addEventListener('reveal:metrics', function(){
-    if(done) return; done = true;
-    document.querySelectorAll('.mnum').forEach(function(el){
-      var to = +el.dataset.to, pre = el.dataset.pre || '';
-      if(reduce){ el.textContent = pre + to; return; }
-      var t0 = performance.now(), dur = 1300;
-      (function step(now){
-        var p = Math.min(1, (now - t0) / dur);
-        var e = 1 - Math.pow(1 - p, 3);
-        el.textContent = pre + Math.round(e * to);
-        if(p < 1) requestAnimationFrame(step);
-      })(performance.now());
-    });
-  });
 })();
 
 /* ---- Contenido del home desde data.json (destacada + 3 tarjetas + panel de videos) ----
@@ -124,6 +107,51 @@
           .sort(function(a,b){ return b.fecha.localeCompare(a.fecha); }).slice(0,3);
         if(vids.length) vidsEl.innerHTML = vids.map(vitemHTML).join('');
       }
+      // Métricas calculadas desde el JSON.
+      renderMetrics(data);
     })
-    .catch(function(){ /* se conservan los fallbacks estáticos del HTML */ });
+    .catch(function(){ /* sin conexión al JSON el home queda vacío; en Pages siempre carga */ });
+
+  /* ---- Métricas: recursos, disciplinas, académicos y horas de contenido ---- */
+  function renderMetrics(data){
+    var grid = document.getElementById('metrics'); if(!grid) return;
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var disc = {}, people = {}, mins = 0;
+    data.forEach(function(e){
+      if(e.disciplina) disc[e.disciplina] = 1;
+      var names = [];
+      if(e.academicos) names = names.concat(Array.isArray(e.academicos)?e.academicos:[e.academicos]);
+      if(e.invitado)   names = names.concat(Array.isArray(e.invitado)?e.invitado:[e.invitado]);
+      names.forEach(function(n){ if(n) people[String(n).trim()] = 1; });
+      if(e.duracion){
+        var p = String(e.duracion).split(':').map(Number);
+        if(p.length===3) mins += p[0]*60 + p[1] + p[2]/60;
+        else if(p.length===2) mins += p[0] + p[1]/60;
+      }
+    });
+    var vals = {
+      recursos: data.length,
+      disciplinas: Object.keys(disc).length,
+      academicos: Object.keys(people).length,
+      horas: Math.round(mins/60)
+    };
+    var nums = grid.querySelectorAll('.mnum[data-key]');
+    function run(){
+      nums.forEach(function(el){
+        var to = vals[el.dataset.key] || 0;
+        if(reduce){ el.textContent = to; return; }
+        var t0 = performance.now(), dur = 1300;
+        (function step(now){
+          var pr = Math.min(1,(now-t0)/dur), e = 1-Math.pow(1-pr,3);
+          el.textContent = Math.round(e*to);
+          if(pr<1) requestAnimationFrame(step);
+        })(performance.now());
+      });
+    }
+    if(reduce || !('IntersectionObserver' in window)){ run(); return; }
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(en){ if(en.isIntersecting){ run(); io.disconnect(); } });
+    }, {threshold:.35});
+    io.observe(grid);
+  }
 })();
