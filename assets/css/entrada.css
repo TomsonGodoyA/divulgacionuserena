@@ -16,10 +16,17 @@
 .entry-meta{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap;font-size:13.5px;color:var(--c-ink-2);font-weight:500;}
 .entry-meta .sep{color:var(--fac-text);}
 
-/* ---- Imagen destacada ---- */
+/* ---- Imagen destacada (mini-hero con lift + zoom, como las tarjetas) ---- */
 .entry-figure{max-width:1000px;margin:0 auto;padding:26px 24px 0;}
-.entry-figure img{width:100%;border-radius:16px;display:block;}
+.entry-figure .ef-media{display:block;overflow:hidden;border-radius:16px;}
+.entry-figure img{width:100%;display:block;
+  transition:transform .8s var(--ease);will-change:transform;}
+.entry-figure:hover .ef-media img{transform:scale(1.05);}
 .entry-figure figcaption{font-size:13.5px;color:var(--c-ink-2);margin-top:10px;text-align:center;}
+@media(prefers-reduced-motion:reduce){
+  .entry-figure img{transition:none;}
+  .entry-figure:hover .ef-media img{transform:none;}
+}
 
 /* ---- Cuerpo (bloques) ---- */
 .entry-body{max-width:720px;margin:38px auto 0;padding:0 24px;}
@@ -31,6 +38,16 @@
 .entry-body blockquote cite{display:block;margin-top:14px;font-family:var(--font-body);font-size:14px;
   font-style:normal;color:var(--c-ink-2);font-weight:600;}
 .entry-body blockquote cite::before{content:"— ";}
+
+/* Token de color inline (palabra destacada con el color del área) */
+.token-fac{color:var(--fac-text);font-weight:600;}
+
+/* Cita "consigna": centrada, Fraunces grande, color del área, sin barra lateral */
+.entry-body blockquote.cita-consigna{border-left:0;padding:0 8px;margin:2.4em auto;max-width:44rem;
+  text-align:center;font-family:var(--font-title);font-weight:500;color:var(--fac-text);
+  font-size:clamp(26px,3.4vw,40px);line-height:1.22;}
+.entry-body blockquote.cita-consigna .token-fac{color:inherit;text-decoration:underline;
+  text-decoration-thickness:.06em;text-underline-offset:.12em;}
 
 /* Media que se ensancha más allá de la columna de texto */
 .entry-body .media{width:min(940px,calc(100vw - 40px));margin-left:50%;transform:translateX(-50%);margin-top:2em;margin-bottom:2em;}
@@ -147,6 +164,10 @@
 .e-sep-cap span{font-family:var(--font-title);font-weight:900;color:#fff;font-size:clamp(26px,4.5vw,44px);
   text-shadow:0 2px 30px rgba(0,0,0,.5);max-width:20ch;}
 
+/* Separador minimalista (línea fina temada) */
+.e-sep-min{width:min(120px,32%);height:2px;border:0;margin:2.6em auto;
+  background:linear-gradient(90deg,transparent,var(--fac),transparent);opacity:.6;}
+
 /* Notas y créditos + link a la revista */
 .e-notas{background:var(--c-bg);border:1px solid var(--c-border);border-radius:16px;padding:26px 28px;margin-top:2em;}
 .e-notas h3{font-family:var(--font-title);font-size:20px;margin:0 0 14px;}
@@ -158,6 +179,41 @@
 
 /* Estado inicial de animación (si hay JS + movimiento permitido) */
 .js-on .anim .e-barra-fill,.js-on .anim .e-mbar-fill{width:0;}
+
+/* ============================================================
+   BLOQUES NUEVOS (Sesión 4) — donut + flexbox, temados por var(--fac*)
+   ============================================================ */
+
+/* Donut: anillo animado + leyenda de valores (los % van en la leyenda, no sobre el arco) */
+.e-donut{}
+.e-donut-t{font-family:var(--font-title);font-size:clamp(24px,3.2vw,32px);font-weight:900;
+  margin:0 0 22px;color:var(--c-ink);line-height:1.12;}
+.e-donut-grid{display:grid;grid-template-columns:minmax(220px,320px) 1fr;gap:24px 40px;align-items:center;}
+@media(max-width:640px){.e-donut-grid{grid-template-columns:1fr;justify-items:center;}}
+
+.donut-box{position:relative;width:100%;max-width:320px;margin-inline:auto;}
+.donut-svg{width:100%;height:auto;display:block;transform:rotate(-90deg);}   /* arranca arriba */
+.donut-track{fill:none;stroke:var(--c-border);stroke-width:18;}
+.donut-arco{fill:none;stroke-width:18;stroke-linecap:round;
+  transition:stroke-dasharray 1.1s cubic-bezier(.2,.7,.2,1);}
+@media(prefers-reduced-motion:reduce){.donut-arco{transition:none;}}
+.donut-centro{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:56%;aspect-ratio:1;object-fit:cover;border-radius:50%;}
+
+.donut-leyenda{list-style:none;margin:0;padding:0;display:grid;gap:20px;width:100%;}
+.donut-item{display:grid;grid-template-columns:auto 1fr;column-gap:16px;align-items:baseline;
+  padding-left:14px;border-left:4px solid var(--dot,var(--fac));}
+.donut-valor{grid-row:span 2;font-family:var(--font-title);font-weight:900;
+  font-size:clamp(32px,5vw,52px);line-height:1;font-variant-numeric:tabular-nums;}
+.donut-texto{font-size:16px;line-height:1.5;color:#2b2f38;}
+
+/* Flexbox de tarjetas con ícono */
+.e-flexbox{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;}
+.flex-card{flex:1 1 140px;max-width:200px;display:flex;flex-direction:column;align-items:center;gap:12px;
+  padding:28px 16px;border-radius:14px;background:var(--fac-soft);color:var(--fac-text);}
+.flex-ico{width:34px;height:34px;color:var(--fac);}
+.flex-ico svg{width:100%;height:100%;display:block;}
+.flex-lbl{font-weight:600;font-size:17px;}
 
 /* ============================================================
    ENCABEZADO DE ENTRADA DE VIDEO (estilo Quanta) — auto si tipo:audiovisual + youtubeId

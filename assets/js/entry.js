@@ -19,7 +19,20 @@
   function fmtFecha(iso){ var p=(iso||'').split('-'); return p.length===3 ? (+p[2])+' de '+MESES[(+p[1])-1]+' de '+p[0] : ''; }
   function esc(s){ return (s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
+  /* Marcado inline mínimo: **palabra** -> token de color del área.
+     Escapa HTML primero (seguro) y luego aplica el token. Se usa en títulos
+     (subtitulo, título de donut) donde no queremos HTML crudo. Un ** sin cerrar
+     se deja literal, no rompe la página. */
+  function md(s){ return esc(s).replace(/\*\*([^*]+?)\*\*/g,'<span class="token-fac">$1</span>'); }
+
   function getSlug(){ return new URLSearchParams(location.search).get('slug') || ''; }
+
+  /* Iconos SVG inline para el bloque flexbox (heredan color via currentColor). */
+  var FLEX_ICONS = {
+    luz:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>',
+    calor:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V4a2 2 0 0 0-4 0v10.76a4 4 0 1 0 4 0z"/></svg>',
+    oxigeno:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.4"/><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/></svg>'
+  };
 
   var YT_PLAY = '<button class="evbtn" aria-label="Reproducir video"><svg viewBox="0 0 68 48" fill="none">'
     + '<path d="M66.5 7.5a8 8 0 0 0-5.6-5.7C56 .5 34 .5 34 .5s-22 0-26.9 1.3A8 8 0 0 0 1.5 7.5 83 83 0 0 0 .2 24a83 83 0 0 0 1.3 16.5 8 8 0 0 0 5.6 5.7C12 47.5 34 47.5 34 47.5s22 0 26.9-1.3a8 8 0 0 0 5.6-5.7A83 83 0 0 0 67.8 24a83 83 0 0 0-1.3-16.5z" fill="#f00"/>'
@@ -36,8 +49,9 @@
   /* Nota: 'texto' en parrafo/cita admite HTML inline (contenido de confianza, escrito por la Oficina). */
   var BLOQUES = {
     parrafo: function(b){ return '<p>'+(b.texto||'')+'</p>'; },
-    subtitulo: function(b){ return '<h2>'+esc(b.texto)+'</h2>'; },
+    subtitulo: function(b){ return '<h2>'+md(b.texto)+'</h2>'; },
     cita: function(b){
+      if(b.estilo==='consigna') return '<blockquote class="cita-consigna">'+(b.texto||'')+'</blockquote>';
       return '<blockquote>'+(b.texto||'')+(b.autor?'<cite>'+esc(b.autor)+'</cite>':'')+'</blockquote>';
     },
     imagen: function(b){
@@ -112,9 +126,51 @@
       return '<div class="e-acc">'+items+'</div>';
     },
     separador: function(b){
+      if(b.estilo==='minimal') return '<div class="e-sep-min" role="separator"></div>';
       return '<div class="e-sep"><img class="js-parallax" src="'+esc(b.src)+'" alt="'+esc(b.alt)+'">'
         + (b.titulo?'<div class="e-sep-cap"><span>'+esc(b.titulo)+'</span></div>':'') + '</div>';
     },
+
+    /* ---- Bloques nuevos (Sesión 4) — genéricos, reutilizables desde el JSON ---- */
+
+    /* Donut: anillo animado + valores en leyenda inferior (no sobre el arco).
+       JSON: { tipo:"donut", titulo, imgCentro, altCentro,
+               segmentos:[ {valor, color, texto} ], gap? }
+       Los valores son independientes (no suman 100); cada arco = valor/100 del anillo. */
+    donut: function(b){
+      var segs = b.segmentos||[];
+      var R=80, C=2*Math.PI*R, gap=(b.gap!=null?+b.gap:0), off=0;
+      var arcs='', leg='';
+      segs.forEach(function(s){
+        var visible = Math.max(0,(+s.valor - gap))/100*C;
+        var dashoff = -off/100*C;
+        arcs += '<circle class="donut-arco js-donut" cx="100" cy="100" r="'+R+'" stroke="'+esc(s.color)+'" '
+          + 'data-dash="'+visible.toFixed(2)+' '+C.toFixed(2)+'" '
+          + 'style="stroke-dasharray:0 '+C.toFixed(2)+';stroke-dashoffset:'+dashoff.toFixed(2)+'"></circle>';
+        leg += '<li class="donut-item" style="--dot:'+esc(s.color)+'">'
+          + '<span class="donut-valor" style="color:'+esc(s.color)+'">'+(+s.valor)+'%</span>'
+          + '<span class="donut-texto">'+md(s.texto)+'</span></li>';
+        off += (+s.valor);
+      });
+      return '<figure class="media anim e-donut">'
+        + (b.titulo?'<h2 class="e-donut-t">'+md(b.titulo)+'</h2>':'')
+        + '<div class="e-donut-grid"><div class="donut-box">'
+        + '<svg class="donut-svg" viewBox="0 0 200 200" role="img" aria-label="'+esc(segs.map(function(s){return s.valor+'%';}).join(', '))+'">'
+        + '<circle class="donut-track" cx="100" cy="100" r="'+R+'"></circle>'+arcs+'</svg>'
+        + (b.imgCentro?'<img class="donut-centro" src="'+esc(b.imgCentro)+'" alt="'+esc(b.altCentro||'')+'" loading="lazy">':'')
+        + '</div><ul class="donut-leyenda">'+leg+'</ul></div></figure>';
+    },
+
+    /* Flexbox de tarjetas con ícono.
+       JSON: { tipo:"flexbox", items:[ {icono:"luz|calor|oxigeno", label} ] } */
+    flexbox: function(b){
+      var cards=(b.items||[]).map(function(it){
+        return '<div class="flex-card"><span class="flex-ico">'+(FLEX_ICONS[it.icono]||'')+'</span>'
+          + '<span class="flex-lbl">'+esc(it.label)+'</span></div>';
+      }).join('');
+      return '<div class="media e-flexbox">'+cards+'</div>';
+    },
+
     notas: function(b){
       var out='<div class="e-notas"><h3>'+esc(b.titulo||'Notas y créditos')+'</h3>';
       if(b.creditoFoto) out+='<p><b>Crédito fotográfico:</b> '+b.creditoFoto+'</p>';
@@ -208,7 +264,7 @@
         + '<h1>'+esc(entry.titulo)+'</h1>'
         + '<div class="entry-meta">'+meta+'</div>'
         + '</div></header>'
-        + ((entry.hero||entry.img) ? '<figure class="entry-figure"><img src="'+esc(entry.hero||entry.img)+'" alt="'+esc(entry.alt)+'"></figure>' : '');
+        + ((entry.hero||entry.img) ? '<figure class="entry-figure"><span class="ef-media"><img src="'+esc(entry.hero||entry.img)+'" alt="'+esc(entry.alt)+'"></span></figure>' : '');
     }
 
     root.innerHTML = headHTML + bodyHTML + acadHTML
@@ -267,7 +323,7 @@
     });
   }
 
-  /* ---------- Animaciones (contadores, gauge, barras, parallax) ---------- */
+  /* ---------- Animaciones (contadores, gauge, barras, donut, parallax) ---------- */
   function fmtNum(n, dec, sep){
     var s = dec>0 ? n.toFixed(dec) : String(Math.round(n));
     if(dec>0){ var pt=s.split('.'); if(sep) pt[0]=pt[0].replace(/\B(?=(\d{3})+(?!\d))/g,'.'); s=pt[0]+','+pt[1]; }
@@ -299,6 +355,8 @@
     blk.querySelectorAll('.js-bar').forEach(function(bar){ bar.style.width=parseFloat(bar.dataset.pct||'0')+'%'; });
     blk.querySelectorAll('.js-gauge').forEach(fillGauge);
     if(blk.classList.contains('js-gauge')) fillGauge(blk);
+    /* Donut: al entrar en viewport, cada arco crece hasta su dasharray final (CSS anima la transición). */
+    blk.querySelectorAll('.js-donut').forEach(function(arc){ arc.style.strokeDasharray=arc.dataset.dash; });
   }
   function initAnimations(){
     var blocks=root.querySelectorAll('.anim'); if(!blocks.length) return;
