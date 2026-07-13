@@ -118,8 +118,8 @@
       "tipo": "acordeon",
       "items": [
         { "titulo": "Bioaccesibilidad del 75,36%", "contenido": "Porcentaje del aceite que quedó disponible para su absorción tras la digestión simulada en laboratorio." },
-        { "titulo": "El aceite se libera donde importa", "contenido": "Un 52,23% es liberado en la fase intestinal." }
-        { "titulo": "Creación de macrocápsulas", "contenido": "Altamente estables." }
+        { "titulo": "El aceite se libera donde importa", "contenido": "Un 52,23% es liberado en la fase intestinal." },
+        { "titulo": "Creación de macrocápsulas", "contenido": "Altamente estables." },
         { "titulo": "Proceso optimizado con RSM", "contenido": "(metodología de superficie de respuesta), que ajusta las condiciones ideales -tiempo, concentración y temperatura- para mejorar sus propiedades físicas." }
       ]
     },
@@ -137,6 +137,7 @@
       "titulo": "Notas y créditos",
       "creditoFoto": "(mantén el tuyo)",
       "notasTecnicas": "(mantén las tuyas)",
+      "académica": "Dra. Vilbett Briones",
       "revista": { "titulo": "Revisar la investigación en la revista", "url": "https://www.sciencedirect.com/science/article/pii/S2666833524000078?via%3Dihub" }
     }
   ]
