@@ -228,6 +228,19 @@
 .flex-ico svg{width:100%;height:100%;display:block;}
 .flex-lbl{font-weight:600;font-size:17px;}
 
+/* Bloque dúo: imagen + texto en dos columnas (lado izq/der) */
+.e-duo{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center;}
+.e-duo-fig{margin:0;}
+.e-duo-fig img{width:100%;border-radius:14px;display:block;}
+.e-duo-txt h2{font-family:var(--font-title);font-size:26px;font-weight:700;margin:0 0 .4em;color:var(--c-ink);line-height:1.15;}
+.e-duo-txt p{font-size:17px;line-height:1.7;color:#2b2f38;margin:0;}
+.e-duo--der .e-duo-fig{order:2;}
+@media(max-width:720px){
+  .e-duo{grid-template-columns:1fr;gap:20px;}
+  .e-duo--der .e-duo-fig{order:0;}
+}
+
+
 /* ============================================================
    ENCABEZADO DE ENTRADA DE VIDEO (estilo Quanta) — auto si tipo:audiovisual + youtubeId
    ============================================================ */

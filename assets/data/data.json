@@ -101,13 +101,10 @@
       "texto": "Testeo e **iteraciones**"
     },
     {
-      "tipo": "imagen",
-      "ancho": "texto",
+      "tipo": "duo",
+      "lado": "izq",
       "src": "assets/img/entradas/aceite-papaya/testeo.webp",
-      "alt": "Macrocápsula de aceite encapsulado"
-    },
-    {
-      "tipo": "parrafo",
+      "alt": "Macrocápsula de aceite encapsulado",
       "texto": "La investigadora evaluó las macrocápsulas midiendo su <b>estabilidad mecánica</b>, elasticidad, <b>rigidez</b> y <b>pérdida de aceite</b>. Asimismo se simuló la <b>digestión</b> humana en laboratorio."
     },
     {

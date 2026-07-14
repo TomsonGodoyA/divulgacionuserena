@@ -182,6 +182,20 @@
       return '<div class="media e-flexbox">'+cards+'</div>';
     },
 
+/* Imagen + texto en dos columnas.
+       lado:"izq" = imagen a la izquierda / texto derecha (por defecto)
+       lado:"der" = imagen a la derecha / texto izquierda
+       JSON: { tipo:"duo", src, alt, texto, titulo?, lado } */
+    duo: function(b){
+      var cls = 'e-duo' + (b.lado==='der' ? ' e-duo--der' : '');
+      return '<div class="media '+cls+'">'
+        + '<figure class="e-duo-fig"><img src="'+esc(b.src)+'" alt="'+esc(b.alt)+'" loading="lazy"></figure>'
+        + '<div class="e-duo-txt">'
+        + (b.titulo?'<h2>'+md(b.titulo)+'</h2>':'')
+        + (b.texto?'<p>'+b.texto+'</p>':'') + '</div></div>';
+    },
+
+
     notas: function(b){
       var out='<div class="e-notas"><h3>'+esc(b.titulo||'Notas y créditos')+'</h3>';
       var acad = b.academicos || b.academica || b['académica'] || b['académicos'];
