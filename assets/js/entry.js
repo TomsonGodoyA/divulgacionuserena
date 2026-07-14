@@ -55,7 +55,8 @@
       return '<blockquote>'+(b.texto||'')+(b.autor?'<cite>'+esc(b.autor)+'</cite>':'')+'</blockquote>';
     },
     imagen: function(b){
-      var cls = 'media' + (b.ancho==='texto' ? ' media--texto' : '');
+      var anchos = {texto:'media--texto', chica:'media--chica'};
+      var cls = 'media' + (anchos[b.ancho] ? ' '+anchos[b.ancho] : '');
       var cap = '';
       if(Array.isArray(b.leyenda) && b.leyenda.length){
         cap = '<figcaption class="img-leyenda">' + b.leyenda.map(function(it){

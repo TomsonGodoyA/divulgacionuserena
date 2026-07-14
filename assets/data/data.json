@@ -13,7 +13,7 @@
     "alt": "Papaya cortada por la mitad mostrando sus semillas, sobre fondo claro.",
     "url": "entrada.html?slug=aceite-papaya",
     "destacado": true,
-    "bloques": [
+  "bloques": [
     {
       "tipo": "cita",
       "estilo": "consigna",
@@ -82,7 +82,7 @@
     },
     {
       "tipo": "imagen",
-      "ancho": "texto",
+      "ancho": "chica",
       "src": "assets/img/entradas/aceite-papaya/gelacion-esquema.webp",
       "alt": "Capas de recubrimiento: caseína, alginato de sodio y el aceite en el centro",
       "leyenda": [
@@ -102,6 +102,7 @@
     },
     {
       "tipo": "imagen",
+      "ancho": "texto",
       "src": "assets/img/entradas/aceite-papaya/testeo.webp",
       "alt": "Macrocápsula de aceite encapsulado"
     },
@@ -123,10 +124,8 @@
     {
       "tipo": "acordeon",
       "items": [
-        { "titulo": "Bioaccesibilidad del 75,36%", "contenido": "Porcentaje del aceite que quedó disponible para su absorción tras la digestión simulada en laboratorio." },
-        { "titulo": "El aceite se libera donde importa", "contenido": "Un 52,23% es liberado en la fase intestinal." },
-        { "titulo": "Creación de macrocápsulas", "contenido": "Altamente estables." },
-        { "titulo": "Proceso optimizado con RSM", "contenido": "(metodología de superficie de respuesta), que ajusta las condiciones ideales -tiempo, concentración y temperatura- para mejorar sus propiedades físicas." }
+        { "titulo": "Bioaccesibilidad (75,36%)", "contenido": "Porcentaje del aceite que quedó disponible para su absorción tras la digestión simulada en laboratorio." },
+        { "titulo": "Eficiencia de encapsulación (52,23%)", "contenido": "Proporción del aceite que quedó efectivamente retenido dentro de la macrocápsula." }
       ]
     },
     {
