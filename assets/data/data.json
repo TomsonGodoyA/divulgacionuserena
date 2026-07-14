@@ -162,38 +162,89 @@
     "destacado": false,
     "creditos": "Investigación de la Universidad de La Serena, difundida por la Oficina de Divulgación y Difusión de la Ciencia y la Tecnología.",
     "bloques": [
-      {
-        "tipo": "parrafo",
-        "texto": "Las aves cantoras —o paseriformes— son el grupo más diverso de aves del planeta. Entender qué las hace vulnerables al cambio climático es clave para su conservación."
-      },
-      {
-        "tipo": "subtitulo",
-        "texto": "Un grupo diverso y frágil"
-      },
-      {
-        "tipo": "carrusel",
-        "pie": "Registro fotográfico del equipo. [Revisar especies]",
-        "imagenes": [
-          {
-            "src": "assets/img/entradas/aves-cantoras-cambio-climatico/foto-01.webp",
-            "alt": "Ave paseriforme de pecho amarillo. [Revisar especie]"
-          },
-          {
-            "src": "assets/img/entradas/aves-cantoras-cambio-climatico/foto-02.webp",
-            "alt": "Ave posada sobre una hoja. [Revisar especie]"
-          }
-        ]
-      },
-      {
-        "tipo": "cita",
-        "texto": "No todas las especies responden igual: algunas tienen rasgos que las hacen mucho más sensibles.",
-        "autor": "Equipo de investigación"
-      },
-      {
-        "tipo": "parrafo",
-        "texto": "El estudio identifica rasgos ecológicos que predicen el riesgo de extinción, información esencial para priorizar los esfuerzos de conservación."
-      }
+  {
+    "tipo": "cita",
+    "estilo": "consigna",
+    "texto": "Un estudio con liderazgo USerena y la colaboración de instituciones internacionales revela qué características determinan el riesgo de extinción de los paseriformes."
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "De qué se trata este **estudio**"
+  },
+  {
+    "tipo": "parrafo",
+    "texto": "Un estudio publicado en la revista científica <i>Global Change Biology</i> —una de las más influyentes en ecología global— analizó cómo el nicho de aridez influye en el riesgo de extinción actual y futuro de las aves. El nicho de aridez se refiere a la preferencia de una especie por ambientes secos o húmedos, y a su capacidad para tolerar distintos niveles de aridez a lo largo de su distribución geográfica."
+  },
+  { "tipo": "separador", "estilo": "minimal" },
+  {
+    "tipo": "dato",
+    "valor": 5558,
+    "sep": true,
+    "texto": "aves paseriformes analizadas, más conocidas como <b>aves cantoras</b> o <i>songbirds</i>."
+  },
+  {
+    "tipo": "duo",
+    "lado": "izq",
+    "src": "assets/img/entradas/aves-cantoras-cambio-climatico/paseriforme-vertical.webp",
+    "alt": "Ave paseriforme posada en una rama",
+    "titulo": "El grupo más diverso de aves del planeta",
+    "texto": "Los paseriformes son el orden de aves más diverso del planeta: existen más de 6.000 especies distribuidas prácticamente en todo el mundo. El estudio trabajó con 5.558 de ellas.<br><br>Los reconocemos en nuestro entorno cotidiano: gorriones<sup>1</sup>, zorzales<sup>2</sup>, jilgueros<sup>3</sup> y tordos<sup>4</sup> pertenecen a este grupo. Son pequeños, abundantes y ecológicamente fundamentales: dispersan semillas, regulan poblaciones de insectos y forman parte de múltiples cadenas alimentarias."
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "Metodología de **trabajo**"
+  },
+  {
+    "tipo": "parrafo",
+    "texto": "Mediante modelos bayesianos que incorporan rasgos ecológicos e historia evolutiva, el estudio proyecta que el número de especies en riesgo será mayor en el futuro que el que registramos hoy.<br><br>El modelo integró rasgos ecológicos y de historia de vida de cada especie —como tamaño de puesta, amplitud de hábitat, tipo de dieta y comportamiento migratorio— junto con su posición en el gradiente de aridez global."
+  },
+  {
+    "tipo": "imagen",
+    "src": "assets/img/entradas/aves-cantoras-cambio-climatico/metodologia-aridez.webp",
+    "alt": "Gradiente de aridez y aves",
+    "pie": "A menor tolerancia a variaciones climáticas → mayor riesgo de extinción."
+  },
+  {
+    "tipo": "separador",
+    "estilo": "banda",
+    "src": "assets/img/entradas/aves-cantoras-cambio-climatico/banda-aves.webp",
+    "alt": "Aves paseriformes en su hábitat"
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "Tres grupos **vulnerables**"
+  },
+  {
+    "tipo": "acordeon",
+    "items": [
+      { "titulo": "Especies con preferencia por ambientes húmedos", "contenido": "<ul><li>Menos adaptadas a sequías crecientes.</li><li>Mayor vulnerabilidad ante un mundo que se vuelve más seco.</li></ul>" },
+      { "titulo": "Especies con preferencia por ambientes áridos y tamaños de puesta pequeños", "contenido": "<ul><li>Adaptadas a la aridez, pero con baja capacidad reproductiva.</li><li>Menos resilientes ante perturbaciones adicionales.</li></ul>" },
+      { "titulo": "Su vulnerabilidad aumenta cuando además presentan", "contenido": "<ul><li>Escasa amplitud de hábitat.</li><li>Generaciones cortas.</li><li>Dieta omnívora.</li><li>Comportamiento migratorio.</li></ul>" }
     ]
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "Ciencia para prevenir y **conservar mejor**"
+  },
+  {
+    "tipo": "parrafo",
+    "texto": "Al identificar qué especies están en mayor riesgo —y por qué— este estudio entrega información crítica para priorizar las acciones de conservación: dónde intervenir geográficamente y qué especies requieren atención urgente.<br><br>Integrar preferencias climáticas y rasgos biológicos permite anticipar la vulnerabilidad antes de que se vuelva irreversible, orientando estrategias más precisas en un mundo cada vez más árido."
+  },
+  {
+    "tipo": "carrusel",
+    "imagenes": [
+      { "src": "assets/img/entradas/aves-cantoras-cambio-climatico/carrusel-01.webp", "alt": "Ave 1", "pie": "Pie de foto 1" },
+      { "src": "assets/img/entradas/aves-cantoras-cambio-climatico/carrusel-02.webp", "alt": "Ave 2", "pie": "Pie de foto 2" },
+      { "src": "assets/img/entradas/aves-cantoras-cambio-climatico/carrusel-03.webp", "alt": "Ave 3", "pie": "Pie de foto 3" }
+    ]
+  },
+  {
+    "tipo": "notas",
+    "titulo": "Notas y créditos",
+    "academicos": ["Dra. Mariángeles Petit", "Dra. Angéline Bertin"],
+    "revista": { "titulo": "Revisar la investigación en la revista", "url": "https://onlinelibrary.wiley.com/doi/10.1111/gcb.70278" }
+  }
+]
   },
   {
     "id": 3,

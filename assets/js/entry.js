@@ -76,7 +76,9 @@
     carrusel: function(b){
       var imgs = b.imagenes||[];
       var slides = imgs.map(function(im,n){
-        return '<div class="eslide'+(n===0?' on':'')+'"><img src="'+esc(im.src)+'" alt="'+esc(im.alt)+'" loading="lazy"></div>';
+        return '<div class="eslide'+(n===0?' on':'')+'">'
+          + '<img class="js-lightbox" src="'+esc(im.src)+'" alt="'+esc(im.alt)+'" data-cap="'+esc(im.pie||'')+'" loading="lazy">'
+          + (im.pie?'<figcaption class="eslide-cap">'+esc(im.pie)+'</figcaption>':'') + '</div>';
       }).join('');
       var arrows = imgs.length>1
         ? '<button class="earrow l" aria-label="Anterior">‹</button><button class="earrow r" aria-label="Siguiente">›</button><div class="edots"></div>'
@@ -138,7 +140,8 @@
     },
     separador: function(b){
       if(b.estilo==='minimal') return '<div class="e-sep-min" role="separator"></div>';
-      return '<div class="e-sep"><img class="js-parallax" src="'+esc(b.src)+'" alt="'+esc(b.alt)+'">'
+      var extra = b.estilo==='banda' ? ' e-sep--banda' : '';
+      return '<div class="e-sep'+extra+'"><img class="js-parallax" src="'+esc(b.src)+'" alt="'+esc(b.alt)+'">'
         + (b.titulo?'<div class="e-sep-cap"><span>'+esc(b.titulo)+'</span></div>':'') + '</div>';
     },
 
@@ -304,6 +307,7 @@
     initVideos();
     initAnimations();
     initParallax();
+    initLightbox();
   }
 
   function notFound(){
@@ -410,6 +414,21 @@
     }
     addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(upd); ticking=true; } },{passive:true});
     upd();
+  }
+  function initLightbox(){
+    var trigs = root.querySelectorAll('.js-lightbox'); if(!trigs.length) return;
+    var lb = document.createElement('div'); lb.className='e-lightbox'; lb.setAttribute('aria-hidden','true');
+    lb.innerHTML = '<button class="e-lb-close" aria-label="Cerrar">×</button>'
+      + '<img class="e-lb-img" src="" alt=""><div class="e-lb-cap"></div>';
+    document.body.appendChild(lb);
+    var img=lb.querySelector('.e-lb-img'), cap=lb.querySelector('.e-lb-cap');
+    function open(src,alt,c){ img.src=src; img.alt=alt||''; cap.textContent=c||''; cap.style.display=c?'block':'none';
+      lb.classList.add('on'); lb.setAttribute('aria-hidden','false'); }
+    function close(){ lb.classList.remove('on'); lb.setAttribute('aria-hidden','true'); img.src=''; }
+    trigs.forEach(function(t){ t.style.cursor='zoom-in';
+      t.addEventListener('click', function(){ open(t.src, t.alt, t.dataset.cap); }); });
+    lb.addEventListener('click', function(e){ if(e.target===lb || e.target.classList.contains('e-lb-close')) close(); });
+    addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
   }
 
   /* ---------- Carga ---------- */
