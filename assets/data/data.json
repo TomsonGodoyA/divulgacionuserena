@@ -125,7 +125,9 @@
       "tipo": "acordeon",
       "items": [
         { "titulo": "Bioaccesibilidad (75,36%)", "contenido": "Porcentaje del aceite que quedó disponible para su absorción tras la digestión simulada en laboratorio." },
-        { "titulo": "Eficiencia de encapsulación (52,23%)", "contenido": "Proporción del aceite que quedó efectivamente retenido dentro de la macrocápsula." }
+        { "titulo": "Eficiencia de encapsulación (52,23%)", "contenido": "Proporción del aceite que quedó efectivamente retenido dentro de la macrocápsula." },
+        { "titulo": "Creación de macrocápsulas", "contenido": "Altamente estables." },
+        { "titulo": "Proceso optimizado con RSM", "contenido": "(metodología de superficie de respuesta), que ajusta las condiciones ideales -tiempo, concentración y temperatura- para mejorar sus propiedades físicas." }
       ]
     },
     {
@@ -144,7 +146,7 @@
       "creditoFoto": "(mantén el tuyo)",
       "notasTecnicas": "(mantén las tuyas)",
       "revista": { "titulo": "Revisar la investigación en la revista", "url": "https://www.sciencedirect.com/science/article/pii/S2666833524000078?via%3Dihub" }
-    }
+      }
   ]
   },
   {
