@@ -44,12 +44,7 @@
   var vidsEl = document.getElementById('videos-list');
   if(!featEl && !cardsEl && !vidsEl) return;
 
-  var AREAS = {
-    humanidades:{t:'var(--yellow-t)', fac:'Facultad de Humanidades'},
-    ciencias:{t:'var(--green-t)', fac:'Facultad de Ciencias'},
-    facsej:{t:'var(--purple-t)', fac:'FACSEJ'},
-    ingenieria:{t:'var(--blue-t)', fac:'Facultad de Ingeniería'}
-  };
+  var AREAS = window.AREAS;
   var MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
   function fmtFecha(iso){ var p=(iso||'').split('-'); return p.length===3 ? (+p[2])+' de '+MESES[(+p[1])-1]+' de '+p[0] : ''; }
   function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
@@ -59,20 +54,20 @@
     + '<path d="M10 8.4l6.2 3.6-6.2 3.6z" fill="#fff"/></svg></span>';
 
   function cardHTML(e){
-    var a = AREAS[e.area] || {t:'var(--c-ink)', fac:e.area};
+    var a = AREAS[e.area] || {t:'var(--c-ink)', label:e.area};
     return '<a class="pcard" href="'+esc(e.url||'#')+'">'
       + '<div class="th"><img src="'+esc(e.img)+'" alt="'+esc(e.alt)+'" loading="lazy"></div>'
       + '<div class="body">'
       + '<div class="eye" style="color:'+a.t+'">'+esc(e.disciplina)+'</div>'
       + '<h4>'+esc(e.titulo)+'</h4>'
-      + '<span class="chip solid" style="background:'+a.t+'">'+esc(a.fac)+'</span>'
+      + '<span class="chip solid" style="background:'+a.t+'">'+esc(a.label)+'</span>'
       + '<span class="more">Leer más →</span>'
       + '</div></a>';
   }
   function featHTML(e){
-    var a = AREAS[e.area] || {t:'var(--c-ink)', fac:e.area};
+    var a = AREAS[e.area] || {t:'var(--c-ink)', label:e.area};
     return '<div class="txt">'
-      + '<div class="chips"><span class="chip solid" style="background:'+a.t+'">'+esc(a.fac)+'</span>'
+      + '<div class="chips"><span class="chip solid" style="background:'+a.t+'">'+esc(a.label)+'</span>'
       + '<span class="chip dot" style="color:'+a.t+'">'+esc(e.disciplina)+'</span></div>'
       + '<h3>'+esc(e.titulo)+'</h3>'
       + '<p>'+esc(e.resumen)+'</p>'

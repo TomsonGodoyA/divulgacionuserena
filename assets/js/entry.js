@@ -8,12 +8,7 @@
   if(!root) return;
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  var AREAS = {
-    humanidades:{label:'Humanidades', fac:'Facultad de Humanidades'},
-    ciencias:{label:'Ciencias', fac:'Facultad de Ciencias'},
-    facsej:{label:'Cs. Sociales, Empresariales y Jurídicas', fac:'FACSEJ'},
-    ingenieria:{label:'Ingeniería', fac:'Facultad de Ingeniería'}
-  };
+  var AREAS = window.AREAS;
   var TIPOS = {grafico:'Gráfico', audiovisual:'Audiovisual', podcast:'Podcast'};
   var MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
   function fmtFecha(iso){ var p=(iso||'').split('-'); return p.length===3 ? (+p[2])+' de '+MESES[(+p[1])-1]+' de '+p[0] : ''; }
@@ -223,13 +218,13 @@
 
   /* ---------- Tarjeta relacionada ---------- */
   function relCard(e){
-    var a = AREAS[e.area] || {fac:e.area};
-    var t = 'var(--'+({humanidades:'yellow',ciencias:'green',facsej:'purple',ingenieria:'blue'}[e.area]||'c-ink')+'-t)';
+    var a = AREAS[e.area] || {label:e.area, t:'var(--c-ink)'};
+    var t = a.t;
     return '<a class="pcard" href="entrada.html?slug='+esc(e.slug)+'">'
       + '<div class="th"><img src="'+esc(e.img)+'" alt="'+esc(e.alt)+'" loading="lazy"></div>'
       + '<div class="body"><div class="eye" style="color:'+t+'">'+esc(e.disciplina)+'</div>'
       + '<h4>'+esc(e.titulo)+'</h4>'
-      + '<span class="chip solid" style="background:'+t+'">'+esc(a.fac)+'</span>'
+      + '<span class="chip solid" style="background:'+t+'">'+esc(a.label)+'</span>'
       + '<span class="more">Leer más →</span></div></a>';
   }
   function relacionados(entry, data){
@@ -247,7 +242,7 @@
 
   /* ---------- Construcción de la página ---------- */
   function build(entry, data){
-    var a = AREAS[entry.area] || {label:entry.area, fac:entry.area};
+    var a = AREAS[entry.area] || {label:entry.area, t:'var(--c-ink)'};
     document.title = entry.titulo + ' · Divulgación USerena';
     root.className = 'tema-'+entry.area;
 

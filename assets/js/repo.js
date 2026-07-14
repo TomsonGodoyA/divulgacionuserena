@@ -7,12 +7,7 @@
   var PER = 12;
   var DATA = [];
 
-  var AREAS = {
-    humanidades:{label:'Humanidades', pill:'Humanidades', t:'var(--yellow-t)'},
-    ciencias:{label:'Ciencias', pill:'Ciencias', t:'var(--green-t)'},
-    facsej:{label:'Cs. Sociales, Empresariales y Jurídicas', pill:'Cs. Sociales, Empresariales y J.', t:'var(--purple-t)'},
-    ingenieria:{label:'Ingeniería', pill:'Ingeniería', t:'var(--blue-t)'}
-  };
+  var AREAS = window.AREAS;
 
   var state = {q:'', orden:'reciente', tipo:'', area:new Set(), pag:1};
   function $(id){ return document.getElementById(id); }
@@ -52,7 +47,7 @@
       + '<div class="body">'
       + '<div class="eye" style="color:'+a.t+'">'+esc(e.disciplina)+'</div>'
       + '<h4>'+esc(e.titulo)+'</h4>'
-      + '<span class="chip solid" style="background:'+a.t+'">'+a.pill+'</span>'
+      + '<span class="chip solid" style="background:'+a.t+'">'+esc(a.label)+'</span>'
       + '<span class="more">Leer más →</span>'
       + '</div></a>';
   }
