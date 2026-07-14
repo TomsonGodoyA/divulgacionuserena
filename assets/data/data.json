@@ -233,9 +233,10 @@
   {
     "tipo": "carrusel",
     "imagenes": [
-      { "src": "assets/img/entradas/aves-cantoras-cambio-climatico/carrusel-01.webp", "alt": "Ave 1", "pie": "Pie de foto 1" },
-      { "src": "assets/img/entradas/aves-cantoras-cambio-climatico/carrusel-02.webp", "alt": "Ave 2", "pie": "Pie de foto 2" },
-      { "src": "assets/img/entradas/aves-cantoras-cambio-climatico/carrusel-03.webp", "alt": "Ave 3", "pie": "Pie de foto 3" }
+      { "src": "assets/img/entradas/aves-cantoras-cambio-climatico/carrusel-01.webp", "alt": "Ave 1", "pie": "Gorrión" },
+      { "src": "assets/img/entradas/aves-cantoras-cambio-climatico/carrusel-02.webp", "alt": "Ave 2", "pie": "Jilguero" },
+      { "src": "assets/img/entradas/aves-cantoras-cambio-climatico/carrusel-03.webp", "alt": "Ave 3", "pie": "Zorzal" },
+      { "src": "assets/img/entradas/aves-cantoras-cambio-climatico/carrusel-04.webp", "alt": "Ave 4", "pie": "Tordo" }
     ]
   },
   {
